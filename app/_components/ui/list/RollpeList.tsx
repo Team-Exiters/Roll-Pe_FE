@@ -5,36 +5,39 @@ import { COLORS } from "@/public/styles/colors";
 import {
   Rollpe,
   RollpeListItemProps,
-  RollpeListProps,
+  // RollpeListProps,
   SearchRollpeProps,
 } from "@/public/utils/types";
 import { RollpeListItem, RollpeSearchListItem } from "./RollpeListItem";
 import Image from "next/image";
 import NoneList from "@/public/images/icons/icon_non_list.svg";
+import { useEffect } from "react";
 
-export const RollpeList: React.FC<RollpeListProps> = ({
-  rollpeList,
-  resultText,
-}) => {
+interface RollpeListProps {
+  list: Rollpe[];
+  count: number;
+  resultText: string;
+}
+
+export const RollpeList: React.FC<RollpeListProps> = (
+  listData: RollpeListProps
+) => {
+  const { list, count, resultText } = listData;
+
+  useEffect(() => {
+    console.log(list);
+  }, [list]);
+
   return (
     <RollpeListWrapper>
       <div className={"count-wrapper"}>
         <em>
-          총 {rollpeList.length}개{resultText}
+          총 {count}개{resultText}
         </em>
       </div>
       <RollpeListContainer>
-        {rollpeList.map((rollpe: RollpeListItemProps, _: number) => (
-          <RollpeListItem
-            key={rollpe.rollpeId}
-            rollpeId={rollpe.rollpeId}
-            rollpeTitle={rollpe.rollpeTitle}
-            rollpeOwner={rollpe.rollpeOwner}
-            createdAt={rollpe.createdAt}
-            dDay={rollpe.dDay}
-            isPublic={rollpe.isPublic}
-            thumbnail={rollpe.thumbnail}
-          />
+        {list.map((rollpe: Rollpe, _: number) => (
+          <RollpeListItem key={rollpe.code} {...rollpe} />
         ))}
       </RollpeListContainer>
     </RollpeListWrapper>

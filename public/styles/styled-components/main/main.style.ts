@@ -2,6 +2,17 @@
 import styled from "styled-components";
 import { COLORS } from "../../colors";
 
+// General Styles
+// General Section Styles
+export const GeneralSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 2.5rem 1.25rem 2.188rem 1.25rem;
+  width: calc(100% - 2.5rem);
+`;
+
 export const MainPageContainer = styled.main`
   display: flex;
   flex-direction: column;

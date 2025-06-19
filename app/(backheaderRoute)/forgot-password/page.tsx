@@ -6,10 +6,10 @@ import Image from "next/image";
 import Logo from "@/public/images/logos/logo.korean.png";
 import { COLORS } from "@/public/styles/colors";
 import { useState, useTransition } from "react";
-import { postForgotPassword } from "@/app/api/auth/forgot-password/route";
+import { postForgotPassword } from "@/public/utils/apis/forgotPassword";
 
 const ForgotPasswordPage: React.FC = () => {
-  const [isPending, startTransition] = useTransition();
+  const [, startTransition] = useTransition();
   const [email, setEmail] = useState<string>("");
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -28,7 +28,7 @@ const ForgotPasswordPage: React.FC = () => {
               alert(res);
             }, 500);
           })
-          .catch((err) => {
+          .catch(() => {
             setTimeout(() => {
               alert("오류가 발생했습니다. 다시 시도해주세요.");
             }, 500);
@@ -59,7 +59,7 @@ const ForgotPasswordPage: React.FC = () => {
   );
 };
 
-export const ForgotPasswordWrapper = styled.main`
+const ForgotPasswordWrapper = styled.main`
   padding: 5rem 1.25rem;
   width: calc(100% - 2.5rem);
   height: 100%;
@@ -68,7 +68,7 @@ export const ForgotPasswordWrapper = styled.main`
   line-height: normal;
 `;
 
-export const ForgotPasswordContainer = styled.div`
+const ForgotPasswordContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,7 +76,7 @@ export const ForgotPasswordContainer = styled.div`
   width: 100%;
 `;
 
-export const IntroWrapper = styled.div`
+const IntroWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

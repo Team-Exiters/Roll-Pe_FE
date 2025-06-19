@@ -18,12 +18,12 @@ import DUMMY from "@/public/images/image/image_templete.png";
 import { Button } from "@/app/_components/ui/button/StyledButton";
 import { Modal } from "@/app/_components/ui/modal/Modal";
 import ReceiverSelect from "@/app/_components/ui/modal/modal-contents/receiver-select/ReceiverSelect";
-import { getRollpeCreateDetail } from "@/app/api/rollpe/route";
-import { logOutOk } from "@/app/api/auth/log-out/route";
+import { getRollpeCreateDetail } from "@/public/utils/apis/rollpe";
+import { logOutOk } from "@/public/utils/apis/logOut";
 import Loading from "@/app/_components/ui/loading/Loading";
 import { useSelector } from "react-redux";
 import { RootState } from "@/public/redux/store";
-import { postCreateRollpe } from "@/app/api/rollpe/route";
+import { postCreateRollpe } from "@/public/utils/apis/rollpe";
 import { useRouter } from "next/navigation";
 
 export interface RollpeRequestBody {

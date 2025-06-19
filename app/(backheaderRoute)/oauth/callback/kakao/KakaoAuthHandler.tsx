@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { kakaoLogin } from "@/app/api/oauth/callback/kakao/route";
+import { kakaoLogin } from "@/public/utils/apis/kakao";
 import { useDispatch } from "react-redux";
 import { setUser } from "@/public/redux/slices/userSlice";
 

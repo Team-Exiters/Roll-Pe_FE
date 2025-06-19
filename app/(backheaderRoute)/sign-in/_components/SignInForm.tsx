@@ -2,7 +2,7 @@
 import styled from "styled-components";
 import { COLORS } from "@/public/styles/colors";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { signIn } from "@/app/api/auth/sign-in/route";
+import { signIn } from "@/public/utils/apis/signIn";
 import { ButtonSubmit } from "@/app/_components/ui/button/StyledButton";
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";

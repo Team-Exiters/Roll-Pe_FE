@@ -3,7 +3,7 @@ import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setUser } from "@/public/redux/slices/userSlice";
-import { googleLogin } from "@/app/api/oauth/callback/google/route";
+import { googleLogin } from "@/public/utils/apis/google";
 
 const GoogleAuthHandler = () => {
   const [code, setCode] = useState<string | null>(null);

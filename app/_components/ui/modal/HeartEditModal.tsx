@@ -6,7 +6,7 @@ import { ModalWrapper } from "./Modal";
 import CloseWhite from "@/public/images/icons/icon_close_white.svg";
 import Image from "next/image";
 import { HeartCreateRequestBody } from "@/public/utils/types";
-import { postCreateHeart } from "@/app/api/rollpe/heart/route";
+import { postCreateHeart } from "@/public/utils/apis/hearts";
 
 interface HeartModalProps {
   paperFk: number;

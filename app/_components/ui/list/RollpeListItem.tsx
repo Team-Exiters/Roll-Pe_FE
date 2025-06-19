@@ -2,31 +2,41 @@
 import styled from "styled-components";
 import { COLORS } from "@/public/styles/colors";
 import Image from "next/image";
-import DUMMY from "@/public/images/image/image_dummy_thumb.png";
+import CONGRATS from "@/public/images/image/image_congrats.png";
+import RIP from "@/public/images/image/image_rip.png";
+import WHITE from "@/public/images/image/image_white.png";
 import { Rollpe, RollpeListItemProps } from "@/public/utils/types";
 import { useRouter } from "next/navigation";
+import { StaticImageData } from "next/image";
 
-export const RollpeListItem: React.FC<RollpeListItemProps> = ({
-  rollpeId,
-  rollpeTitle,
-  rollpeOwner,
-  createdAt,
-  dDay,
-  isPublic,
-  thumbnail,
-}) => {
+const THEME_THUMBNAIL: Record<string, StaticImageData> = {
+  축하: CONGRATS,
+  추모: RIP,
+  화이트: WHITE,
+};
+
+export const RollpeListItem: React.FC<Rollpe> = (data: Rollpe) => {
+  const { viewStat, receive, title, host, createdAt, theme } = data;
+  const today = new Date();
+  const targetDate = new Date(receive.receivingDate);
+  const timeDifference = targetDate.getTime() - today.getTime();
+  const dDay = Math.ceil(timeDifference / (1000 * 3600 * 24));
+  const createdDate = new Date(createdAt).toLocaleDateString();
+
   return (
     <RollpeListItemWrapper>
       <div className={"badge-container"}>
-        <span className={`badge-item ${isPublic ? "public" : "private"}`}>
-          {isPublic ? "공개" : "비공개"}
+        <span className={`badge-item ${viewStat ? "private" : "public"}`}>
+          {viewStat ? "비공개" : "공개"}
         </span>
-        <span className={"badge-item d-day"}>D-{dDay}</span>
+        <span className={"badge-item d-day"}>
+          {dDay < 0 ? `D+${Math.abs(dDay)}` : `D-${dDay}`}
+        </span>
       </div>
       <div className={"info-wrapper"}>
         <div className={"thumb-wrapper"}>
           <Image
-            src={DUMMY}
+            src={THEME_THUMBNAIL[theme] || CONGRATS}
             alt={"썸네일"}
             layout="responsive"
             width={48}
@@ -34,9 +44,9 @@ export const RollpeListItem: React.FC<RollpeListItemProps> = ({
           />
         </div>
         <div className={"title-wrappper"}>
-          <p className={"title"}>{rollpeTitle}</p>
+          <p className={"title"}>{title}</p>
           <p className={"desc"}>
-            {rollpeOwner} 주최 | {createdAt} 생성
+            {host.name} 주최 | {createdDate} 생성
           </p>
         </div>
       </div>
@@ -45,7 +55,7 @@ export const RollpeListItem: React.FC<RollpeListItemProps> = ({
 };
 
 export const RollpeSearchListItem: React.FC<Rollpe> = (data: Rollpe) => {
-  const { code, receive, host, title, createdAt } = data;
+  const { code, receive, host, title, createdAt, theme } = data;
   const today = new Date();
   const targetDate = new Date(receive.receivingDate);
   const timeDifference = targetDate.getTime() - today.getTime();
@@ -63,7 +73,7 @@ export const RollpeSearchListItem: React.FC<Rollpe> = (data: Rollpe) => {
       <div className={"info-wrapper"}>
         <div className={"thumb-wrapper"}>
           <Image
-            src={DUMMY}
+            src={THEME_THUMBNAIL[theme] || CONGRATS}
             alt={"썸네일"}
             layout="responsive"
             width={48}
@@ -140,6 +150,7 @@ const RollpeListItemWrapper = styled.li`
       width: 3rem;
       height: 3rem;
       border-radius: 50%;
+      border: 1px solid ${COLORS.ROLLPE_SECONDARY};
       overflow: hidden;
 
       & > img {

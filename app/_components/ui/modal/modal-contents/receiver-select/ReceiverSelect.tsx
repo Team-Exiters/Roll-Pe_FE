@@ -17,7 +17,7 @@ const ReceiverSelect: React.FC = () => {
   const [selectedReceiver, setSelectedReceiver] = useState<string>("");
   return (
     <ReceiverSelectContainer>
-      <SearchInput />
+      {/* <SearchInput /> */}
       <ReceiverSelectList>
         <ReceiverListItem
           name={"김테스트1"}

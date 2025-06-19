@@ -3,71 +3,33 @@ import { COLORS } from "@/public/styles/colors";
 import styled from "styled-components";
 import { RollpeListItemProps } from "@/public/utils/types";
 import { RollpeList } from "@/app/_components/ui/list/RollpeList";
+import { Rollpe } from "@/public/utils/types";
 import { useEffect, useState, useTransition } from "react";
-import { getUserRollpe } from "@/app/api/rollpe/route";
+import { getUserRollpeList } from "@/public/utils/apis/rollpe";
 import Loading from "@/app/_components/ui/loading/Loading";
+import { ButtonMore } from "@/app/_components/ui/button/StyledButton";
 
-const DUMMY_ROLLPE_LIST: RollpeListItemProps[] = [
-  {
-    rollpeId: "r01",
-    rollpeTitle: "롤페 제목",
-    rollpeOwner: "김테스트1",
-    createdAt: "2025.2.1",
-    dDay: 365,
-    isPublic: true,
-    thumbnail: "",
-  },
-  {
-    rollpeId: "r02",
-    rollpeTitle: "롤페 제목",
-    rollpeOwner: "김테스트1",
-    createdAt: "2025.2.1",
-    dDay: 365,
-    isPublic: false,
-    thumbnail: "",
-  },
-  {
-    rollpeId: "r03",
-    rollpeTitle: "롤페 제목",
-    rollpeOwner: "김테스트1",
-    createdAt: "2025.2.1",
-    dDay: 365,
-    isPublic: false,
-    thumbnail: "",
-  },
-  {
-    rollpeId: "r04",
-    rollpeTitle: "롤페 제목",
-    rollpeOwner: "김테스트1",
-    createdAt: "2025.2.1",
-    dDay: 365,
-    isPublic: true,
-    thumbnail: "",
-  },
-  {
-    rollpeId: "r05",
-    rollpeTitle: "롤페 제목",
-    rollpeOwner: "김테스트1",
-    createdAt: "2025.2.1",
-    dDay: 365,
-    isPublic: false,
-    thumbnail: "",
-  },
-];
+interface MyRollpeListData {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: Rollpe[];
+}
 
 const MyRollpePage: React.FC = () => {
   const [isPending, startTransition] = useTransition();
-  const [myRollpeList, setMyRollpeList] = useState<RollpeListItemProps[]>([]);
+  const [myRollpeData, setMyRollpeData] = useState<MyRollpeListData>();
+  const [myRollpeList, setMyRollpeList] = useState<Rollpe[]>();
 
   const getMyRollpeList = () => {
     startTransition(async () => {
-      await getUserRollpe("my")
+      await getUserRollpeList("my")
         .then((res) => {
           console.log(res);
+          setMyRollpeData(res);
         })
         .catch((error) => {
           console.error(error);
-          throw new Error();
         });
     });
   };
@@ -75,6 +37,13 @@ const MyRollpePage: React.FC = () => {
   useEffect(() => {
     getMyRollpeList();
   }, []);
+
+  useEffect(() => {
+    console.log(myRollpeData);
+    if (myRollpeData) {
+      setMyRollpeList(myRollpeData.results);
+    }
+  }, [myRollpeData]);
 
   return isPending ? (
     <Loading />
@@ -84,7 +53,14 @@ const MyRollpePage: React.FC = () => {
         <div className={"title-wrapper"}>
           <h1>내 롤페</h1>
         </div>
-        <RollpeList rollpeList={DUMMY_ROLLPE_LIST} resultText={""} />
+        {myRollpeList && (
+          <RollpeList
+            list={myRollpeList}
+            count={myRollpeData ? myRollpeData.count : 0}
+            resultText={""}
+          />
+        )}
+        <ButtonMore text="더보기" />
       </MyRollpeContainer>
     </MyRollpeWrapper>
   );

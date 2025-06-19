@@ -7,13 +7,8 @@ import { StyledInput } from "@/app/_components/ui/input/Input";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
 import Logo from "@/public/images/logos/logo.korean.png";
-import {
-  ForgotPasswordWrapper,
-  ForgotPasswordContainer,
-  IntroWrapper,
-} from "../page";
 import { useParams, useRouter } from "next/navigation";
-import { patchChangePassword } from "@/app/api/auth/forgot-password/route";
+import { patchChangePassword } from "@/public/utils/apis/forgotPassword";
 import Loading from "@/app/_components/ui/loading/Loading";
 
 interface ChangePasswordInputs {
@@ -47,6 +42,7 @@ const ForgotChangePasswordPage: React.FC = () => {
 
   const submitHandler = () => {
     identifyCode &&
+      typeof identifyCode === "string" &&
       startTransition(async () => {
         await patchChangePassword(identifyCode, watch("password"))
           .then((res) => {
@@ -129,6 +125,42 @@ const EmailForm = styled.form`
       font-size: 0.875rem;
       color: ${COLORS.ROLLPE_MAIN};
     }
+  }
+`;
+
+const ForgotPasswordWrapper = styled.main`
+  padding: 5rem 1.25rem;
+  width: calc(100% - 2.5rem);
+  height: 100%;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+`;
+
+const ForgotPasswordContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.75rem;
+  width: 100%;
+`;
+
+const IntroWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+
+  & > .img-wrapper {
+    width: 6.5rem;
+    height: 3.25rem;
+  }
+
+  & > p {
+    color: ${COLORS.ROLLPE_SECONDARY};
+    text-align: center;
+    font-family: var(--font-pretendard);
+    font-size: 1.25rem;
   }
 `;
 

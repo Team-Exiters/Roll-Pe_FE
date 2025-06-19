@@ -58,7 +58,7 @@ const MainIntroSectionWrapper = styled(MainContentSectionWrapper)`
   justify-content: center;
   align-items: center;
 
-  height: 100svh;
+  min-height: 100%;
 
   background: url("images/image/image_background.png") no-repeat center center;
   background-size: cover;

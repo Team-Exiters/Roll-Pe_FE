@@ -24,7 +24,7 @@ const FooterWrapper = styled.footer`
 
   padding: 1.75rem 0 1.75rem 0;
   width: 100%;
-  height: 8.125rem;
+  max-height: 8.125rem;
   background-color: #555555;
 
   & > h2 {

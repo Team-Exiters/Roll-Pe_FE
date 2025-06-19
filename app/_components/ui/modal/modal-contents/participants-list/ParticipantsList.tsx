@@ -18,6 +18,7 @@ const ParticipantsList: React.FC<ParticipantsProps> = ({
       <List>
         {invitingUser ? (
           invitingUser.map((user: User) => (
+            // eslint-disable-next-line react/jsx-key
             <li>
               <p>
                 {user.name}

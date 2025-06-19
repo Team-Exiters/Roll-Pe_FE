@@ -3,7 +3,7 @@ import { COLORS } from "@/public/styles/colors";
 import styled from "styled-components";
 import { RollpeListItemProps } from "@/public/utils/types";
 import { RollpeList } from "@/app/_components/ui/list/RollpeList";
-import { getRollpeList } from "@/app/api/rollpe/route";
+import { getRollpeList } from "@/public/utils/apis/rollpe";
 import { useTransition, useState, useEffect } from "react";
 import { Rollpe } from "@/public/utils/types";
 
@@ -77,7 +77,7 @@ const InvitedRollpePage: React.FC = () => {
         <div className={"title-wrapper"}>
           <h1>초대받은 롤페</h1>
         </div>
-        <RollpeList rollpeList={DUMMY_ROLLPE_LIST} resultText={""} />
+        {/* <RollpeList data={DUMMY_ROLLPE_LIST} resultText={""} /> */}
       </MyRollpeContainer>
     </MyRollpeWrapper>
   );
