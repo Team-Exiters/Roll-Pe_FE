@@ -40,7 +40,7 @@ export default function RootLayout({
                 width: "100%",
                 maxWidth: "768px",
                 height: "100%",
-                // maxHeight: "100svh",
+                maxHeight: "100svh",
                 border: `1px solid ${COLORS.ROLLPE_GRAY}`,
                 overflowX: "hidden",
                 overflowY: "auto",

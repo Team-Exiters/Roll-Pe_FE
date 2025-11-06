@@ -3,14 +3,15 @@ import styled from "styled-components";
 import Image from "next/image";
 import {
   MainContentSectionWrapper,
+  OnBoardingGuideWrapper,
   GuideContainer,
   GuideSectionTitle,
 } from "../../ui/sections/MainSection";
 import sectionImage from "@/public/images/image/image_section_1.png";
 
-const MainRollpeGuideSection01: React.FC = () => {
+const OnBoardingGuide01: React.FC = () => {
   return (
-    <MainRollpeGuideSection01Wrapper>
+    <OnBoardingGuideWrapper>
       <GuideContainer>
         <GuideSectionTitle>
           쉽게 만드는
@@ -24,17 +25,12 @@ const MainRollpeGuideSection01: React.FC = () => {
             width={305}
             height={406}
             alt={"롤페 설명1"}
+            loading="lazy"
           />
         </div>
       </GuideContainer>
-    </MainRollpeGuideSection01Wrapper>
+    </OnBoardingGuideWrapper>
   );
 };
 
-const MainRollpeGuideSection01Wrapper = styled(MainContentSectionWrapper)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export default MainRollpeGuideSection01;
+export default OnBoardingGuide01;

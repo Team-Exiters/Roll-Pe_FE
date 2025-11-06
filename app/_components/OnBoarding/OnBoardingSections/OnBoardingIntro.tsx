@@ -2,21 +2,34 @@
 import Image from "next/image";
 import styled from "styled-components";
 import { Button } from "../../ui/button/StyledButton";
-import { MainContentSectionWrapper } from "../../ui/sections/MainSection";
 import { COLORS } from "@/public/styles/colors";
+import background from "@/public/images/image/image_background.png";
 import logo from "@/public/images/logos/logo.korean.png";
 import arrowDown from "@/public/images/icons/icon_arrow_down.svg";
 import { useSelector } from "react-redux";
 import { RootState } from "@/public/redux/store";
 import { useRouter } from "next/navigation";
+import { MainContentSectionWrapper } from "../../ui/sections/MainSection";
 
-const MainIntroSection: React.FC = () => {
+const OnBoardingIntro: React.FC = () => {
   const router = useRouter();
   const user = useSelector((state: RootState) => state.simpleUser);
 
   return (
-    <MainIntroSectionWrapper>
-      <MainIntroContentsContainer>
+    <IntroWrapper>
+      <div className={"background-wrapper"}>
+        <Image
+          src={background}
+          alt={"배경 이미지"}
+          fill={true}
+          objectFit="cover"
+          objectPosition="center"
+          priority={true}
+        />
+        <div className={"gradient-overlay"} />
+      </div>
+
+      <IntroContentsContainer>
         <div className={"logo-wrapper"}>
           <Image
             src={logo}
@@ -24,6 +37,7 @@ const MainIntroSection: React.FC = () => {
             layout="responsive"
             width={168}
             height={84}
+            loading="lazy"
           />
         </div>
         <p className={"intro"}>
@@ -41,42 +55,47 @@ const MainIntroSection: React.FC = () => {
             }
           }}
         />
-      </MainIntroContentsContainer>
+      </IntroContentsContainer>
       <div className={"scroll-down"}>
         <Image src={arrowDown} width={15} height={15} alt={"scroll down"} />
         <em>아래로 스크롤 해보아요!</em>
       </div>
-    </MainIntroSectionWrapper>
+    </IntroWrapper>
   );
 };
 
-const MainIntroSectionWrapper = styled(MainContentSectionWrapper)`
+const IntroWrapper = styled(MainContentSectionWrapper)`
   position: relative;
   z-index: 1;
-
   display: flex;
   justify-content: center;
   align-items: center;
 
-  min-height: 100%;
+  min-height: 100svh;
 
-  background: url("images/image/image_background.png") no-repeat center center;
-  background-size: cover;
-  position: relative;
+  font-family: var(--font-hakgyoansim);
 
-  &::after {
-    content: "";
+  & > .main-image-wrapper {
+    width: 20rem;
+    height: 26.75rem;
+  }
+
+  .background-wrapper {
     position: absolute;
+    inset: 0;
     z-index: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 6.25rem;
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 1) 100%
-    );
+
+    .gradient-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0.4) 40%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      z-index: 1;
+    }
   }
 
   & > .scroll-down {
@@ -107,7 +126,6 @@ const MainIntroSectionWrapper = styled(MainContentSectionWrapper)`
     & > em {
       color: ${COLORS.ROLLPE_GRAY};
       text-align: center;
-      font-family: var(--font-hakgyoansim);
       font-size: 1rem;
       font-style: normal;
       font-weight: 400;
@@ -116,7 +134,7 @@ const MainIntroSectionWrapper = styled(MainContentSectionWrapper)`
   }
 `;
 
-const MainIntroContentsContainer = styled.div`
+const IntroContentsContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -134,7 +152,7 @@ const MainIntroContentsContainer = styled.div`
     text-align: center;
     font-size: 1.25rem;
     font-style: normal;
-    font-family: var(--font-hakgyoansim);
+
     font-weight: 400;
     line-height: 1.25rem;
     margin: 1.25rem 0rem 3.75rem 0rem;
@@ -146,4 +164,4 @@ const MainIntroContentsContainer = styled.div`
   }
 `;
 
-export default MainIntroSection;
+export default OnBoardingIntro;

@@ -3,6 +3,9 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  images: {
+    formats: ["image/avif", "image/webp"],
+  },
 
   async rewrites() {
     return [
