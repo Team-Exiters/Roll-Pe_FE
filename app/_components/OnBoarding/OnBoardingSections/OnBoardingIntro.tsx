@@ -37,6 +37,7 @@ const OnBoardingIntro: React.FC = () => {
             layout="responsive"
             width={168}
             height={84}
+            loading="lazy"
           />
         </div>
         <p className={"intro"}>

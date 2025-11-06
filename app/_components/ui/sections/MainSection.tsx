@@ -3,14 +3,29 @@
 import styled from "styled-components";
 import { COLORS } from "@/public/styles/colors";
 
+export const OnBoardingPageWrapper = styled.main`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+`;
+
 export const MainContentSectionWrapper = styled.section`
   padding: 2.5rem 1.25rem;
   width: calc(100% - 2.5rem);
-
   & > .main-image-wrapper {
     width: 20rem;
     height: 26.75rem;
   }
+`;
+
+export const OnBoardingGuideWrapper = styled(MainContentSectionWrapper)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100svh;
 `;
 
 export const GuideContainer = styled.div`

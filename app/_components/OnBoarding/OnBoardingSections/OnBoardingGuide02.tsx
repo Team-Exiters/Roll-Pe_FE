@@ -26,7 +26,6 @@ const OnBoardingGuide02: React.FC = () => {
             width={305}
             height={406}
             alt={"롤페 설명1"}
-            placeholder="blur"
             loading="lazy"
           />
         </div>
