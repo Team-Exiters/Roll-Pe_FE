@@ -2,7 +2,7 @@
 import Image from "next/image";
 import styled from "styled-components";
 import { COLORS } from "@/public/styles/colors";
-import { RollpeRequestBody } from "@/app/(logoHeaderRoute)/rollpe/create/_components/form/RollpeCreateForm";
+import { RollpeRequestBody } from "@/app/(layout_BL)/rollpe/create/_components/form/RollpeCreateForm";
 
 interface CreateRollpeCardProps {
   id: number;
