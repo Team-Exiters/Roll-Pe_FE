@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import {
   MainContentSectionWrapper,
+  OnBoardingGuideWrapper,
   GuideContainer,
   GuideSectionTitle,
 } from "../../ui/sections/MainSection";
@@ -11,7 +12,7 @@ import sectionImage from "@/public/images/image/image_section_2.png";
 
 const OnBoardingGuide02: React.FC = () => {
   return (
-    <MainRollpeGuideSection02Wrapper>
+    <OnBoardingGuide02Wrapper>
       <GuideContainer>
         <GuideSectionTitle>
           함께 나누었던 추억,
@@ -25,17 +26,16 @@ const OnBoardingGuide02: React.FC = () => {
             width={305}
             height={406}
             alt={"롤페 설명1"}
+            placeholder="blur"
+            loading="lazy"
           />
         </div>
       </GuideContainer>
-    </MainRollpeGuideSection02Wrapper>
+    </OnBoardingGuide02Wrapper>
   );
 };
 
-const MainRollpeGuideSection02Wrapper = styled(MainContentSectionWrapper)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+const OnBoardingGuide02Wrapper = styled(OnBoardingGuideWrapper)`
   background-color: ${COLORS.ROLLPE_SECTION_BACKGROUND};
 `;
 
