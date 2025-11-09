@@ -23,7 +23,7 @@ const OnBoardingGuide02: React.FC = () => {
             alt={"롤페 설명1"}
             width={0}
             height={0}
-            sizes="100vw"
+            sizes="100%"
           />
         </MainImageWrapper>
       </GuideContainer>
