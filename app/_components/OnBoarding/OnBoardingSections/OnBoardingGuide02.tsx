@@ -1,8 +1,7 @@
-"use client";
-import styled from "styled-components";
-import Image from "next/image";
 import {
-  MainContentSectionWrapper,
+  MainImageWrapper,
+  OnBoardingGuide02Wrapper,
+  StyledIntroImage,
   OnBoardingGuideWrapper,
   GuideContainer,
   GuideSectionTitle,
@@ -19,23 +18,18 @@ const OnBoardingGuide02: React.FC = () => {
           <br />
           언제 어디서나
         </GuideSectionTitle>
-        <div className={"main-image-wrapper"}>
-          <Image
+        <MainImageWrapper>
+          <StyledIntroImage
             src={sectionImage}
-            layout="responsive"
-            width={305}
-            height={406}
             alt={"롤페 설명1"}
-            loading="lazy"
+            width={0}
+            height={0}
+            sizes="100vw"
           />
-        </div>
+        </MainImageWrapper>
       </GuideContainer>
     </OnBoardingGuide02Wrapper>
   );
 };
-
-const OnBoardingGuide02Wrapper = styled(OnBoardingGuideWrapper)`
-  background-color: ${COLORS.ROLLPE_SECTION_BACKGROUND};
-`;
 
 export default OnBoardingGuide02;
