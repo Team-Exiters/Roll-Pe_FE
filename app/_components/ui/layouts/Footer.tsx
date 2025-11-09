@@ -1,10 +1,11 @@
 "use client";
 import styled from "styled-components";
 import { COLORS } from "@/public/styles/colors";
+import { dunggeunmo } from "@/public/fonts/fonts";
 
 const Footer: React.FC = () => {
   return (
-    <FooterWrapper>
+    <FooterWrapper className={dunggeunmo.className}>
       <h2>Team Exiters</h2>
 
       <div className={"copyright"}>
@@ -30,7 +31,6 @@ const FooterWrapper = styled.footer`
   & > h2 {
     color: ${COLORS.ROLLPE_PRIMARY};
     text-align: center;
-    font-family: var(--font-dunggeunmo);
     font-size: 2rem;
     font-style: normal;
     font-weight: 400;
