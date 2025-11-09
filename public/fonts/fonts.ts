@@ -7,7 +7,7 @@ export const pretendard = localFont({
 });
 
 export const hakgyoansim = localFont({
-  src: "./HakgyoansimR.ttf",
+  src: "./HakgyoansimR.woff2",
   weight: "400",
   display: "swap",
   variable: "--font-hakgyoansim",
@@ -22,19 +22,19 @@ export const dunggeunmo = localFont({
 )
 
 export const jalnangothic = localFont({
-  src: "./JalnanGothicTTF.ttf",
+  src: "./JalnanGothicTTF.woff2",
   display: "swap",
   variable: "--font-jalnan",
 })
 
 export const nanumpen = localFont({
-  src: "./NanumPen.ttf",
+  src: "./NanumPen.woff2",
   display: "swap",
   variable: "--font-nanumpen",
 })
 
 export const nanummyeongjo = localFont({
-  src: "./NanumMyeongjo.ttf",
+  src: "./NanumMyeongjo.woff2",
   display: "swap",
   variable: "--font-nanummyeongjo",
 })
