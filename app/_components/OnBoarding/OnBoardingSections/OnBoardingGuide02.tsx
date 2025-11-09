@@ -6,7 +6,6 @@ import {
   GuideContainer,
   GuideSectionTitle,
 } from "../../ui/sections/MainSection";
-import { COLORS } from "@/public/styles/colors";
 import sectionImage from "@/public/images/image/image_section_2.png";
 
 const OnBoardingGuide02: React.FC = () => {
