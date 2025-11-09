@@ -2,14 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { COLORS } from "@/public/styles/colors";
 import StyledComponentsRegistry from "@/public/lib/registry";
-import {
-  pretendard,
-  hakgyoansim,
-  dunggeunmo,
-  jalnangothic,
-  nanumpen,
-  nanummyeongjo,
-} from "@/public/fonts/fonts";
+import { pretendard } from "@/public/fonts/fonts";
 import ReduxProvider from "./_components/redux-provider/ReduxProvider";
 // import SlideMenu from "./_components/ui/layouts/SlideMenu";
 
@@ -24,10 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="ko"
-      className={`${hakgyoansim.variable} ${pretendard.variable} ${dunggeunmo.variable} ${jalnangothic.variable} ${nanumpen.variable} ${nanummyeongjo.variable}`}
-    >
+    <html lang="ko" className={`${pretendard.variable}`}>
       <body>
         <ReduxProvider>
           <StyledComponentsRegistry>
