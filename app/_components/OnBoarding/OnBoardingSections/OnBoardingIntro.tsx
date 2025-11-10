@@ -21,7 +21,7 @@ const OnBoardingIntro: React.FC = () => {
         <Image
           src={background}
           alt={"배경 이미지"}
-          fill={true}
+          fill
           objectFit="cover"
           objectPosition="center"
           priority={true}
@@ -30,16 +30,16 @@ const OnBoardingIntro: React.FC = () => {
       </div>
 
       <IntroContentsContainer>
-        <div className={"logo-wrapper"}>
-          <Image
+        <MainLogoWrapper>
+          <StyledLogoImage
             src={logo}
             alt={"롤페 로고"}
-            layout="responsive"
-            width={168}
-            height={84}
+            width={0}
+            height={0}
+            sizes="100%"
             priority={true}
           />
-        </div>
+        </MainLogoWrapper>
         <p className={"intro"}>
           다같이 한 마음으로
           <br />
@@ -72,13 +72,6 @@ const IntroWrapper = styled(MainContentSectionWrapper)`
   align-items: center;
 
   min-height: 100svh;
-
-  font-family: var(--font-hakgyoansim);
-
-  & > .main-image-wrapper {
-    width: 20rem;
-    height: 26.75rem;
-  }
 
   .background-wrapper {
     position: absolute;
@@ -142,11 +135,6 @@ const IntroContentsContainer = styled.div`
 
   width: 100%;
 
-  & > .logo-wrapper {
-    width: 10.5rem;
-    height: 5.25rem;
-  }
-
   & > .intro {
     color: ${COLORS.ROLLPE_SECONDARY};
     text-align: center;
@@ -162,6 +150,15 @@ const IntroContentsContainer = styled.div`
     position: relative;
     z-index: 1;
   }
+`;
+
+const MainLogoWrapper = styled.div`
+  width: 10.5rem;
+`;
+
+const StyledLogoImage = styled(Image)`
+  width: 100%;
+  height: auto;
 `;
 
 export default OnBoardingIntro;

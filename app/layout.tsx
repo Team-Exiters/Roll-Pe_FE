@@ -1,15 +1,8 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import { COLORS } from "@/public/styles/colors";
 import StyledComponentsRegistry from "@/public/lib/registry";
 import ReduxProvider from "./_components/redux-provider/ReduxProvider";
-import localFont from "next/font/local";
 // import SlideMenu from "./_components/ui/layouts/SlideMenu";
-
-const pretendard = localFont({
-  src: "../public/fonts/PretendardVariable.woff2",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "롤페 | Roll-Pe",
@@ -22,8 +15,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className={`${pretendard.className}`}>
-      <body>
+    <html
+      lang="ko"
+      style={{
+        margin: "0",
+        maxWidth: "100vw",
+        minHeight: "100dvh",
+      }}
+    >
+      <head></head>
+      <body
+        style={{
+          margin: "0",
+          maxWidth: "100vw",
+          minHeight: "100dvh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         <ReduxProvider>
           <StyledComponentsRegistry>
             <main

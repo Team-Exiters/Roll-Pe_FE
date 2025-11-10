@@ -7,8 +7,7 @@ export const dunggeunmo = localFont({
   src: "../../../../public/fonts/DungGeunMo.woff2",
   weight: "400",
   display: "swap",
-}
-)
+});
 
 const Footer: React.FC = () => {
   return (
@@ -24,7 +23,6 @@ const Footer: React.FC = () => {
 };
 
 const FooterWrapper = styled.footer`
-  z-index: -1;
   display: flex;
   flex-direction: column;
   align-items: center;

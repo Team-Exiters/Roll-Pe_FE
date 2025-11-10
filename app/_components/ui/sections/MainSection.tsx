@@ -6,23 +6,26 @@ import { COLORS } from "@/public/styles/colors";
 
 export const OnBoardingPageWrapper = styled.main`
   position: relative;
+  z-index: 5;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   width: 100%;
+  height: 100%;
+  max-height: 100svh;
 `;
 
 export const MainContentSectionWrapper = styled.section`
   padding: 2.5rem 1.25rem;
   width: calc(100% - 2.5rem);
+  min-height: 100svh;
 `;
 
 export const OnBoardingGuideWrapper = styled(MainContentSectionWrapper)`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100svh;
 `;
 
 export const OnBoardingGuide02Wrapper = styled(OnBoardingGuideWrapper)`
@@ -34,7 +37,7 @@ export const GuideContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-  width: calc(100% - 2.5rem);
+  width: 100%;
 `;
 
 export const GuideSectionTitle = styled.h2`
