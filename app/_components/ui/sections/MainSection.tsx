@@ -39,7 +39,6 @@ export const GuideContainer = styled.div`
 
 export const GuideSectionTitle = styled.h2`
   color: ${COLORS.ROLLPE_SECONDARY};
-  font-family: var(--font-hakgyoansim);
   font-size: 1.75rem;
   font-style: normal;
   font-weight: 400;

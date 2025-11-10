@@ -1,7 +1,14 @@
 "use client";
 import styled from "styled-components";
 import { COLORS } from "@/public/styles/colors";
-import { dunggeunmo } from "@/public/fonts/fonts";
+import localFont from "next/font/local";
+
+export const dunggeunmo = localFont({
+  src: "../../../../public/fonts/DungGeunMo.woff2",
+  weight: "400",
+  display: "swap",
+}
+)
 
 const Footer: React.FC = () => {
   return (

@@ -2,7 +2,6 @@ import {
   MainImageWrapper,
   OnBoardingGuide02Wrapper,
   StyledIntroImage,
-  OnBoardingGuideWrapper,
   GuideContainer,
   GuideSectionTitle,
 } from "../../ui/sections/MainSection";
