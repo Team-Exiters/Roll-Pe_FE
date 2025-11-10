@@ -4,7 +4,12 @@ import { COLORS } from "@/public/styles/colors";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { Rollpe } from "@/public/utils/types";
+import localFont from "next/font/local";
 
+const pretendard = localFont({
+  src: "../../../../public/fonts/PretendardVariable.woff2",
+  display: "swap",
+});
 interface ButtonProps {
   text: string;
   onClickHandler?: () => void;
@@ -30,6 +35,7 @@ export const Button: React.FC<ButtonProps> = ({
   const router = useRouter();
   return route && !onClickHandler ? (
     <StyledButton
+      className={pretendard.className}
       onClick={() => {
         router.push(route);
       }}

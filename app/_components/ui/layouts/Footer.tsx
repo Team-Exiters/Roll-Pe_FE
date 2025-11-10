@@ -1,10 +1,17 @@
 "use client";
 import styled from "styled-components";
 import { COLORS } from "@/public/styles/colors";
+import localFont from "next/font/local";
+
+export const dunggeunmo = localFont({
+  src: "../../../../public/fonts/DungGeunMo.woff2",
+  weight: "400",
+  display: "swap",
+});
 
 const Footer: React.FC = () => {
   return (
-    <FooterWrapper>
+    <FooterWrapper className={dunggeunmo.className}>
       <h2>Team Exiters</h2>
 
       <div className={"copyright"}>
@@ -16,7 +23,6 @@ const Footer: React.FC = () => {
 };
 
 const FooterWrapper = styled.footer`
-  z-index: -1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,7 +36,6 @@ const FooterWrapper = styled.footer`
   & > h2 {
     color: ${COLORS.ROLLPE_PRIMARY};
     text-align: center;
-    font-family: var(--font-dunggeunmo);
     font-size: 2rem;
     font-style: normal;
     font-weight: 400;
