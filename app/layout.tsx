@@ -15,14 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="ko"
-      style={{
-        margin: "0",
-        maxWidth: "100vw",
-        minHeight: "100dvh",
-      }}
-    >
+    <html lang="ko">
       <head></head>
       <body
         style={{
@@ -32,6 +25,9 @@ export default function RootLayout({
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          lineHeight: "1",
+          textRendering: "optimizeSpeed",
+          WebkitFontSmoothing: "antialiased",
         }}
       >
         <ReduxProvider>
