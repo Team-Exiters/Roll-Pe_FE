@@ -9,7 +9,6 @@ import arrowDown from "@/public/images/icons/icon_arrow_down.svg";
 import { useSelector } from "react-redux";
 import { RootState } from "@/public/redux/store";
 import { useRouter } from "next/navigation";
-import { MainContentSectionWrapper } from "../../ui/sections/MainSection";
 
 const OnBoardingIntro: React.FC = () => {
   const router = useRouter();
@@ -64,13 +63,17 @@ const OnBoardingIntro: React.FC = () => {
   );
 };
 
-const IntroWrapper = styled(MainContentSectionWrapper)`
+const IntroWrapper = styled.section`
   position: relative;
   z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 2.5rem 1.25rem;
+  width: calc(100% - 2.5rem);
 
+  min-height: 100vh;
+  min-height: 100dvh;
   min-height: 100svh;
 
   .background-wrapper {
