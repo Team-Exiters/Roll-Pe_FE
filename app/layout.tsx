@@ -21,7 +21,7 @@ export default function RootLayout({
         style={{
           margin: "0",
           maxWidth: "100vw",
-          minHeight: "100dvh",
+          minHeight: "100vh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -41,7 +41,6 @@ export default function RootLayout({
                 width: "100%",
                 maxWidth: "768px",
                 height: "100%",
-                maxHeight: "100svh",
                 border: `1px solid ${COLORS.ROLLPE_GRAY}`,
                 overflowX: "hidden",
                 overflowY: "auto",
@@ -54,7 +53,6 @@ export default function RootLayout({
                   flex: "1",
                   width: "100%",
                   height: "100%",
-                  position: "relative",
                 }}
               >
                 {children}
