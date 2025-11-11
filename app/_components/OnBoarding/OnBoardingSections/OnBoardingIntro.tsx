@@ -9,7 +9,6 @@ import arrowDown from "@/public/images/icons/icon_arrow_down.svg";
 import { useSelector } from "react-redux";
 import { RootState } from "@/public/redux/store";
 import { useRouter } from "next/navigation";
-import { MainContentSectionWrapper } from "../../ui/sections/MainSection";
 
 const OnBoardingIntro: React.FC = () => {
   const router = useRouter();
@@ -24,19 +23,18 @@ const OnBoardingIntro: React.FC = () => {
           fill
           objectFit="cover"
           objectPosition="center"
-          priority={true}
+          priority
         />
         <div className={"gradient-overlay"} />
       </div>
 
       <IntroContentsContainer>
         <MainLogoWrapper>
-          <StyledLogoImage
+          <Image
             src={logo}
             alt={"롤페 로고"}
-            width={0}
-            height={0}
-            sizes="100%"
+            fill
+            objectFit="contain"
             priority={true}
           />
         </MainLogoWrapper>
@@ -64,13 +62,17 @@ const OnBoardingIntro: React.FC = () => {
   );
 };
 
-const IntroWrapper = styled(MainContentSectionWrapper)`
+const IntroWrapper = styled.section`
   position: relative;
   z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 2.5rem 1.25rem;
+  width: calc(100% - 2.5rem);
 
+  min-height: 100vh;
+  min-height: 100dvh;
   min-height: 100svh;
 
   .background-wrapper {
@@ -153,12 +155,9 @@ const IntroContentsContainer = styled.div`
 `;
 
 const MainLogoWrapper = styled.div`
+  position: relative;
   width: 10.5rem;
-`;
-
-const StyledLogoImage = styled(Image)`
-  width: 100%;
-  height: auto;
+  aspect-ratio: 168 / 84;
 `;
 
 export default OnBoardingIntro;

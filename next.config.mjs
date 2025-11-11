@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   compiler: {
-    styledComponents: true,
+    styledComponents: {
+      ssr: true,
+      displayName: false,
+      minify: true,
+    },
   },
   images: {
     formats: ["image/avif", "image/webp"],
