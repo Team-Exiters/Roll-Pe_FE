@@ -23,19 +23,18 @@ const OnBoardingIntro: React.FC = () => {
           fill
           objectFit="cover"
           objectPosition="center"
-          priority={true}
+          priority
         />
         <div className={"gradient-overlay"} />
       </div>
 
       <IntroContentsContainer>
         <MainLogoWrapper>
-          <StyledLogoImage
+          <Image
             src={logo}
             alt={"롤페 로고"}
-            width={0}
-            height={0}
-            sizes="100%"
+            fill
+            objectFit="contain"
             priority={true}
           />
         </MainLogoWrapper>
@@ -156,12 +155,9 @@ const IntroContentsContainer = styled.div`
 `;
 
 const MainLogoWrapper = styled.div`
+  position: relative;
   width: 10.5rem;
-`;
-
-const StyledLogoImage = styled(Image)`
-  width: 100%;
-  height: auto;
+  aspect-ratio: 168 / 84;
 `;
 
 export default OnBoardingIntro;

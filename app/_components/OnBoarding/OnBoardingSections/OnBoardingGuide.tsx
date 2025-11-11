@@ -22,12 +22,11 @@ const OnBoardingGuide: React.FC<GuideSectionProps> = ({
       <GuideContainer>
         <GuideSectionTitle>{title}</GuideSectionTitle>
         <MainImageWrapper>
-          <StyledIntroImage
+          <Image
             src={image}
             alt={`롤페 가이드 이미지 ${sectionNum}`}
-            width={0}
-            height={0}
-            sizes="100%"
+            fill
+            objectFit="contain"
           />
         </MainImageWrapper>
       </GuideContainer>
@@ -61,7 +60,9 @@ const GuideContainer = styled.div`
 `;
 
 const MainImageWrapper = styled.div`
+  position: relative;
   width: 100%;
+  aspect-ratio: 642 / 844;
 `;
 
 const GuideSectionTitle = styled.h2`
@@ -70,10 +71,6 @@ const GuideSectionTitle = styled.h2`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-`;
-const StyledIntroImage = styled(Image)`
-  width: 100%;
-  height: auto;
 `;
 
 export default OnBoardingGuide;

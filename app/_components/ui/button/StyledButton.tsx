@@ -10,6 +10,7 @@ const pretendard = localFont({
   src: "../../../../public/fonts/PretendardVariable.woff2",
   display: "swap",
 });
+
 interface ButtonProps {
   text: string;
   onClickHandler?: () => void;
