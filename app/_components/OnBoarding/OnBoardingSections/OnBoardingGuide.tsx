@@ -1,7 +1,5 @@
 "use client";
 import styled from "styled-components";
-
-import sectionImage from "@/public/images/image/image_section_1.png";
 import Image, { StaticImageData } from "next/image";
 import { COLORS } from "@/public/styles/colors";
 
@@ -16,7 +14,6 @@ const OnBoardingGuide: React.FC<GuideSectionProps> = ({
   sectionNum,
   title,
 }: GuideSectionProps) => {
-  console.log(typeof sectionImage);
   return (
     <GuideWrapper $sectionNum={sectionNum}>
       <GuideContainer>

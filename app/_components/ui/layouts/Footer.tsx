@@ -7,12 +7,7 @@ export const dunggeunmo = localFont({
   src: "../../../../public/fonts/DungGeunMo.woff2",
   weight: "400",
   display: "swap",
-});
-
-export const pretendard = localFont({
-  src: "../../../../public/fonts/PretendardVariable.woff2",
-  weight: "400",
-  display: "swap",
+  preload: true,
 });
 
 const Footer: React.FC = () => {
@@ -20,7 +15,7 @@ const Footer: React.FC = () => {
     <FooterWrapper className={dunggeunmo.className}>
       <h2>Team Exiters</h2>
 
-      <CopyrightWrapper className={pretendard.className}>
+      <CopyrightWrapper>
         <em>team.exiters@gmail.com</em>
         <em>Copyright 2025 Team Exiters. All rights reserved.</em>
       </CopyrightWrapper>
@@ -59,6 +54,7 @@ const CopyrightWrapper = styled.div`
   & > em {
     color: ${COLORS.ROLLPE_PRIMARY};
     text-align: center;
+    font-family: var(--font-pretendard);
     font-size: 0.625rem;
     font-style: normal;
     font-weight: 400;
