@@ -27,8 +27,8 @@ export default function RootLayout({
       <body>
         <ReduxProvider>
           <StyledComponentsRegistry>
-            <main>
-              <div className={"main-wrapper"}>{children}</div>
+            <main className="main-container">
+              <div className="main-wrapper">{children}</div>
             </main>
           </StyledComponentsRegistry>
         </ReduxProvider>
