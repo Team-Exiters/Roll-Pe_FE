@@ -9,28 +9,33 @@ export const dunggeunmo = localFont({
   display: "swap",
 });
 
+export const pretendard = localFont({
+  src: "../../../../public/fonts/PretendardVariable.woff2",
+  weight: "400",
+  display: "swap",
+});
+
 const Footer: React.FC = () => {
   return (
     <FooterWrapper className={dunggeunmo.className}>
       <h2>Team Exiters</h2>
 
-      <div className={"copyright"}>
-        <p>team.exiters@gmail.com</p>
-        <p>Copyright 2025 Team Exiters. All rights reserved.</p>
-      </div>
+      <CopyrightWrapper className={pretendard.className}>
+        <em>team.exiters@gmail.com</em>
+        <em>Copyright 2025 Team Exiters. All rights reserved.</em>
+      </CopyrightWrapper>
     </FooterWrapper>
   );
 };
 
 const FooterWrapper = styled.footer`
   display: flex;
+  flex: 1;
   flex-direction: column;
   align-items: center;
-  gap: 1.25rem;
 
-  padding: 1.75rem 0 1.75rem 0;
   width: 100%;
-  max-height: 8.125rem;
+  min-height: 8.125rem;
   background-color: #555555;
 
   & > h2 {
@@ -43,19 +48,21 @@ const FooterWrapper = styled.footer`
   }
 
   & > .copyright {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  }
+`;
 
-    & > p {
-      color: ${COLORS.ROLLPE_PRIMARY};
-      text-align: center;
-      font-family: var(--font-pretendard);
-      font-size: 0.625rem;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 200%;
-    }
+const CopyrightWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & > em {
+    color: ${COLORS.ROLLPE_PRIMARY};
+    text-align: center;
+    font-size: 0.625rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
   }
 `;
 
