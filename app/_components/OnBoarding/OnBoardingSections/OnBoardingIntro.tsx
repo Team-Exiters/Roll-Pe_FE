@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Button } from "../../ui/button/StyledButton";
+import { ButtonPrimary } from "../../ui/button/StyledButton";
 import background from "@/public/images/image/image_background.png";
 import logo from "@/public/images/logos/logo.korean.png";
 import arrowDown from "@/public/images/icons/icon_arrow_down.svg";
@@ -38,7 +38,7 @@ const OnBoardingIntro: React.FC = () => {
           <br />
           사랑하는 사람에게 전달해보세요
         </p>
-        <Button text={"롤페 시작하기"} />
+        <ButtonPrimary text={"롤페 시작하기"} route={"/main"} />
       </IntroContentsContainer>
       <div className={"scroll-down"}>
         <Image src={arrowDown} width={15} height={15} alt={"scroll down"} />
