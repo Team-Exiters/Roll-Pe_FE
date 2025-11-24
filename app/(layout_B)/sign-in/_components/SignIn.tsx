@@ -26,8 +26,8 @@ const KAKAO_API_KEY = process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY;
 const GOOGLE_CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_KEY;
 
 const REDIRECT_URI = {
-  kakao: "http://localhost:3000/oauth/callback/kakao",
-  google: "http://localhost:3000/oauth/callback/google",
+  kakao: `${process.env.NEXT_PUBLIC_OAUTH_BASE_URL}/oauth/callback/kakao`,
+  google: `${process.env.NEXT_PUBLIC_OAUTH_BASE_URL}/oauth/callback/google`,
 };
 
 export const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${KAKAO_API_KEY}&redirect_uri=${REDIRECT_URI.kakao}&scope=account_email`;
