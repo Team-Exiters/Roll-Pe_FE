@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
-import { COLORS } from "@/public/styles/colors";
+import "@/public/styles/globals.css";
 import StyledComponentsRegistry from "@/public/lib/registry";
 import ReduxProvider from "./_components/redux-provider/ReduxProvider";
+import localFont from "next/font/local";
 // import SlideMenu from "./_components/ui/layouts/SlideMenu";
+
+const pretendard = localFont({
+  src: "../public/fonts/PretendardVariable.woff2",
+  display: "swap",
+  variable: "--font-pretendard",
+});
 
 export const metadata: Metadata = {
   title: "롤페 | Roll-Pe",
@@ -15,21 +22,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
+    <html lang="ko" className={pretendard.variable}>
       <head></head>
-      <body
-        style={{
-          margin: "0",
-          maxWidth: "100vw",
-          minHeight: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          lineHeight: "1",
-          textRendering: "optimizeSpeed",
-          WebkitFontSmoothing: "antialiased",
-        }}
-      >
+      <body>
         <ReduxProvider>
           <StyledComponentsRegistry>
             <main
@@ -37,22 +32,17 @@ export default function RootLayout({
                 position: "fixed",
                 display: "flex",
                 flexDirection: "column",
-                alignContent: "center",
                 width: "100%",
-                maxWidth: "768px",
+                maxWidth: 768,
                 height: "100%",
-                border: `1px solid ${COLORS.ROLLPE_GRAY}`,
+                border: "1px solid #aaaaaa",
                 overflowX: "hidden",
                 overflowY: "auto",
-                scrollbarWidth: "none",
-                msOverflowStyle: "none",
               }}
             >
               <div
                 style={{
-                  flex: "1",
-                  width: "100%",
-                  height: "100%",
+                  flex: 1,
                 }}
               >
                 {children}

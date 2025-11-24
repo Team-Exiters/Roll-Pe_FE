@@ -4,7 +4,7 @@ import Footer from "../ui/layouts/Footer";
 import localFont from "next/font/local";
 import introImage01 from "@/public/images/image/image_section_1.png";
 import introImage02 from "@/public/images/image/image_section_2.png";
-import { OnBoardingPageWrapper } from "./OnBoardingSections/styles/MainSection";
+import { OnBoardingPageWrapper } from "./OnBoardingSections/styles/OnBoardingStyles";
 
 const hakgyoansim = localFont({
   src: "../../../public/fonts/HakgyoansimR.woff2",
