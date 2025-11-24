@@ -27,6 +27,50 @@ interface SubmitProps {
   isDisabled?: boolean;
 }
 
+export const ButtonPrimary: React.FC<ButtonProps> = ({
+  text,
+  onClickHandler,
+  route,
+}) => {
+  const router = useRouter();
+  return route && !onClickHandler ? (
+    <ButtonWrapper
+      className={pretendard.className}
+      onClick={() => {
+        router.push(route);
+      }}
+    >
+      {text}
+    </ButtonWrapper>
+  ) : (
+    <StyledButton onClick={onClickHandler}>{text}</StyledButton>
+  );
+};
+
+const ButtonWrapper = styled.button`
+  padding: 0.75rem;
+  width: 100%;
+
+  border-radius: 0.5rem;
+  border: 2px solid ${COLORS.ROLLPE_MAIN};
+  background-color: ${COLORS.ROLLPE_MAIN};
+
+  color: ${COLORS.ROLLPE_PRIMARY};
+  text-align: center;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.5rem;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${COLORS.ROLLPE_PRIMARY};
+    color: ${COLORS.ROLLPE_MAIN};
+    transition: all 0.2s ease;
+  }
+`;
+
 // Basic General Button Component
 export const Button: React.FC<ButtonProps> = ({
   text,
