@@ -7,7 +7,7 @@ import { ButtonSubmit } from "@/app/_components/ui/button/StyledButton";
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { StyledInput } from "@/app/_components/ui/input/Input";
-import { useDispatch, UseDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setUser } from "@/public/redux/slices/userSlice";
 import Loading from "@/app/_components/ui/loading/Loading";
 
@@ -23,7 +23,6 @@ const SignInForm: React.FC = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<SignInInputs>();
 
@@ -62,11 +61,13 @@ const SignInForm: React.FC = () => {
             type={"email"}
             {...register("email")}
             placeholder={"이메일"}
+            autoComplete="username"
           />
           <StyledInput
             type={"password"}
             {...register("password")}
             placeholder={"비밀번호"}
+            autoComplete="current-password"
           />
           <ButtonSubmit text={"로그인"} />
         </Form>
