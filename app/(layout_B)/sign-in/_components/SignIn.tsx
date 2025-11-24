@@ -1,9 +1,9 @@
 "use client";
 import Link from "next/link";
-import { useEffect } from "react";
 import styled from "styled-components";
 import { COLORS } from "@/public/styles/colors";
 import Image from "next/image";
+import background from "@/public/images/image/image_background.png";
 import logo from "@/public/images/logos/logo.korean.png";
 import KakaoLogo from "@/public/images/icons/icon_kakao.svg";
 import Google from "@/public/images/icons/icon_google.svg";
@@ -22,8 +22,17 @@ export const GOOGLE_AUTH_URL = `https://accounts.google.com/o/oauth2/v2/auth?cli
 
 const SignIn: React.FC = () => {
   return (
-    <SignInContainer>
+    <SignInWrapper>
       <SignInIntro>
+        <div className={"background-wrapper"}>
+          <Image
+            src={background}
+            alt={"배경 이미지"}
+            fill
+            style={{ objectFit: "cover", objectPosition: "center" }}
+          />
+          <div className={"gradient-overlay"} />
+        </div>
         <div className={"logo-wrapper"}>
           <Image
             src={logo}
@@ -80,11 +89,13 @@ const SignIn: React.FC = () => {
           </Link>
         </div>
       </OtherMenuContainer>
-    </SignInContainer>
+    </SignInWrapper>
   );
 };
 
-const SignInContainer = styled.main`
+const SignInWrapper = styled.main`
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -93,7 +104,23 @@ const SignInContainer = styled.main`
 
   width: 100%;
 
-  font-family: var(--font-hakgyoansim);
+  .background-wrapper {
+    position: absolute;
+    inset: 0;
+    z-index: -99;
+
+    .gradient-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0.4) 40%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      z-index: 1;
+    }
+  }
 `;
 
 const SignInIntro = styled.div`
