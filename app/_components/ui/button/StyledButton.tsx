@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { Rollpe } from "@/public/utils/types";
 import localFont from "next/font/local";
+import Link from "next/link";
 
 const pretendard = localFont({
   src: "../../../../public/fonts/PretendardVariable.woff2",
@@ -14,12 +15,6 @@ const pretendard = localFont({
 interface ButtonProps {
   text: string;
   onClickHandler?: () => void;
-  route?: string;
-}
-
-interface MoreButtonProps extends ButtonProps {
-  nextLink: string;
-  setList: React.Dispatch<React.SetStateAction<Rollpe[]>>;
 }
 
 interface SubmitProps {
@@ -27,23 +22,62 @@ interface SubmitProps {
   isDisabled?: boolean;
 }
 
+interface ButtonLinkProps {
+  text: string;
+  href: string;
+}
+
+// 기본 버튼
 export const ButtonPrimary: React.FC<ButtonProps> = ({
   text,
   onClickHandler,
-  route,
 }) => {
-  const router = useRouter();
-  return route && !onClickHandler ? (
-    <ButtonWrapper
-      className={pretendard.className}
-      onClick={() => {
-        router.push(route);
-      }}
-    >
-      {text}
-    </ButtonWrapper>
+  return (
+    onClickHandler && (
+      <ButtonWrapper className={pretendard.className} onClick={onClickHandler}>
+        {text}
+      </ButtonWrapper>
+    )
+  );
+};
+
+// 세컨더리 버튼
+export const ButtonSecondary: React.FC<ButtonProps> = ({
+  text,
+  onClickHandler,
+}) => {
+  return (
+    onClickHandler && (
+      <StyledButtonSecondary
+        className={pretendard.className}
+        onClick={onClickHandler}
+      >
+        {text}
+      </StyledButtonSecondary>
+    )
+  );
+};
+
+// 서브밋 버튼
+export const ButtonSubmit: React.FC<SubmitProps> = ({ text, isDisabled }) => {
+  return isDisabled ? (
+    <ButtonSubmitWrapper value={text} disabled />
   ) : (
-    <StyledButton onClick={onClickHandler}>{text}</StyledButton>
+    <ButtonSubmitWrapper value={text} />
+  );
+};
+
+// 더보기 버튼
+export const ButtonMore: React.FC<ButtonProps> = ({ text, onClickHandler }) => {
+  return <StyledMore>{text}</StyledMore>;
+};
+
+// 링크 버튼 (단순 페이지 이동)
+export const ButtonLink: React.FC<ButtonLinkProps> = ({ text, href }) => {
+  return (
+    <ButtonLinkWrapper className={pretendard.className} href={href}>
+      {text}
+    </ButtonLinkWrapper>
   );
 };
 
@@ -71,65 +105,9 @@ const ButtonWrapper = styled.button`
   }
 `;
 
-// Basic General Button Component
-export const Button: React.FC<ButtonProps> = ({
-  text,
-  onClickHandler,
-  route,
-}) => {
-  const router = useRouter();
-  return route && !onClickHandler ? (
-    <StyledButton
-      className={pretendard.className}
-      onClick={() => {
-        router.push(route);
-      }}
-    >
-      {text}
-    </StyledButton>
-  ) : (
-    <StyledButton onClick={onClickHandler}>{text}</StyledButton>
-  );
-};
-
-// Secondary General Button Component
-export const ButtonSecondary: React.FC<ButtonProps> = ({
-  text,
-  onClickHandler,
-  route,
-}) => {
-  const router = useRouter();
-  return route && !onClickHandler ? (
-    <StyledButtonSecondary
-      onClick={() => {
-        router.push(route);
-      }}
-    >
-      {text}
-    </StyledButtonSecondary>
-  ) : (
-    <StyledButtonSecondary onClick={onClickHandler}>
-      {text}
-    </StyledButtonSecondary>
-  );
-};
-
-export const ButtonMore: React.FC<ButtonProps> = ({ text, onClickHandler }) => {
-  return <StyledMore>{text}</StyledMore>;
-};
-
-export const ButtonSubmit: React.FC<SubmitProps> = ({ text, isDisabled }) => {
-  return isDisabled ? (
-    <StyledSubmit value={text} disabled />
-  ) : (
-    <StyledSubmit value={text} />
-  );
-};
-
-const StyledSubmit = styled.input.attrs({ type: "submit" })`
+const ButtonSubmitWrapper = styled.input.attrs({ type: "submit" })`
   padding: 0.75rem;
   width: 100%;
-  flex-shrink: 0;
 
   border-radius: 0.5rem;
   border: 2px solid ${COLORS.ROLLPE_MAIN};
@@ -140,7 +118,6 @@ const StyledSubmit = styled.input.attrs({ type: "submit" })`
   font-size: 1rem;
   font-style: normal;
   font-weight: 600;
-  font-family: var(--font-pretendard);
   line-height: 1.5rem;
 
   cursor: pointer;
@@ -157,10 +134,9 @@ const StyledSubmit = styled.input.attrs({ type: "submit" })`
   }
 `;
 
-const StyledButton = styled.button`
+const ButtonLinkWrapper = styled(Link)`
   padding: 0.75rem;
-  width: 100%;
-  flex-shrink: 0;
+  width: calc(100% - 1.5rem);
 
   border-radius: 0.5rem;
   border: 2px solid ${COLORS.ROLLPE_MAIN};
@@ -171,8 +147,8 @@ const StyledButton = styled.button`
   font-size: 1rem;
   font-style: normal;
   font-weight: 600;
-  font-family: var(--font-pretendard);
   line-height: 1.5rem;
+  text-decoration: none;
 
   cursor: pointer;
 
@@ -181,15 +157,20 @@ const StyledButton = styled.button`
     color: ${COLORS.ROLLPE_MAIN};
     transition: all 0.2s ease;
   }
+
+  &:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+  }
 `;
 
-const StyledMore = styled(StyledButton)`
+const StyledMore = styled(ButtonWrapper)`
   border: 2px solid ${COLORS.ROLLPE_SECONDARY};
   background-color: ${COLORS.ROLLPE_PRIMARY};
   color: ${COLORS.ROLLPE_SECONDARY};
 `;
 
-export const StyledButtonSecondary = styled(StyledButton)`
+export const StyledButtonSecondary = styled(ButtonWrapper)`
   background-color: ${COLORS.ROLLPE_PRIMARY};
   color: ${COLORS.ROLLPE_MAIN};
 
