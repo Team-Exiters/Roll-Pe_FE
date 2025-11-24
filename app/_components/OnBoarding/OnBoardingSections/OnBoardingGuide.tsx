@@ -23,7 +23,7 @@ const OnBoardingGuide: React.FC<GuideSectionProps> = ({
             src={image}
             alt={`롤페 가이드 이미지 ${sectionNum}`}
             fill
-            objectFit="contain"
+            style={{ objectFit: "contain" }}
           />
         </MainImageWrapper>
       </GuideContainer>

@@ -10,6 +10,8 @@ const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
+  swcMinify: true,
+  experimental: { esmExternals: true },
 
   async rewrites() {
     return [
@@ -21,8 +23,5 @@ const nextConfig = {
   },
 };
 
-// module.exports = {
-
-// };
-
+// module.exports
 export default nextConfig;

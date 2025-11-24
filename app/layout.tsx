@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "@/public/styles/globals.css";
 import StyledComponentsRegistry from "@/public/lib/registry";
 import ReduxProvider from "./_components/redux-provider/ReduxProvider";
 import localFont from "next/font/local";
@@ -27,8 +27,26 @@ export default function RootLayout({
       <body>
         <ReduxProvider>
           <StyledComponentsRegistry>
-            <main className="main-container">
-              <div className="main-wrapper">{children}</div>
+            <main
+              style={{
+                position: "fixed",
+                display: "flex",
+                flexDirection: "column",
+                width: "100%",
+                maxWidth: 768,
+                height: "100%",
+                border: "1px solid #aaaaaa",
+                overflowX: "hidden",
+                overflowY: "auto",
+              }}
+            >
+              <div
+                style={{
+                  flex: 1,
+                }}
+              >
+                {children}
+              </div>
             </main>
           </StyledComponentsRegistry>
         </ReduxProvider>
