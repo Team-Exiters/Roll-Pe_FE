@@ -2,54 +2,22 @@
 import styled from "styled-components";
 import { COLORS } from "@/public/styles/colors";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { signIn } from "@/public/utils/apis/signIn";
+import { useSignIn } from "@/public/lib/hooks/fetching/useSignIn";
 import { ButtonSubmit } from "@/app/_components/ui/button/StyledButton";
-import { useTransition } from "react";
-import { useRouter } from "next/navigation";
 import { StyledInput } from "@/app/_components/ui/input/Input";
-import { useDispatch } from "react-redux";
-import { setUser } from "@/public/redux/slices/userSlice";
 import Loading from "@/app/_components/ui/loading/Loading";
-
-interface SignInInputs {
-  email: string;
-  password: string;
-}
+import { SignInRequest, SignInResponse, ApiError } from "@/public/utils/types";
 
 const SignInForm: React.FC = () => {
-  const dispatch = useDispatch();
-  const router = useRouter();
-  const [isPending, startTransition] = useTransition();
+  const { mutate, isPending } = useSignIn();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<SignInInputs>();
+  } = useForm<SignInRequest>();
 
-  const onSubmit: SubmitHandler<SignInInputs> = async (data) => {
-    startTransition(async () => {
-      await signIn(data.email, data.password)
-        .then((res) => {
-          dispatch(
-            setUser({
-              id: res.user.id,
-              name: res.user.name,
-              email: res.user.email,
-              identifyCode: res.user.identifyCode,
-              provider: res.user.provider,
-            })
-          );
-          setTimeout(() => {
-            router.push("/main");
-          }, 500);
-        })
-        .catch((err) => {
-          if (err instanceof Error) {
-            console.log(err.message);
-            alert(err.message);
-          }
-        });
-    });
+  const onSubmit = (data: SignInRequest) => {
+    mutate(data);
   };
 
   return (
@@ -61,7 +29,7 @@ const SignInForm: React.FC = () => {
             type={"email"}
             {...register("email")}
             placeholder={"이메일"}
-            autoComplete="username"
+            autoComplete="email"
           />
           <StyledInput
             type={"password"}
