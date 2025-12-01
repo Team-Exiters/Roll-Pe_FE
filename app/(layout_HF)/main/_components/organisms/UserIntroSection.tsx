@@ -5,9 +5,8 @@ import { useUserRollpeList } from "@/public/lib/hooks/fetching/rollpe/useUserRol
 import { persistor, RootState } from "@/public/redux/store";
 import { useRouter } from "next/navigation";
 import {
-  ButtonLink,
-  ButtonPrimary,
-  ButtonSecondary,
+  ButtonLinkPrimary,
+  ButtonLinkSecondary,
 } from "@/app/_components/molecules/ui/button/StyledButton";
 import { GeneralSection } from "@/public/styles/styled-components/main/main.style";
 
@@ -34,16 +33,17 @@ const UserIntroSection: React.FC = () => {
           <div>{data.heart}개의 마음을 작성하셨어요.</div>
         </IntroWrapper>
         <div className={"button-wrapper"}>
-          {/** 버튼 컨테이너 */}
-          <ButtonLink text="초대받은 롤페" href={"/mypage/invited-rollpe"} />
-          {/*TODO ButtonSecondary Link 필요 */}
-          <ButtonSecondary text="롤페 만들기" />
+          <ButtonLinkPrimary
+            text="초대받은 롤페"
+            href={"/mypage/invited-rollpe"}
+          />
+          <ButtonLinkSecondary text="롤페 만들기" href={"/rollpe/create"} />
         </div>
       </SectionWrapper>
     )
   );
 };
-// route={"/rollpe/create"}
+
 const SectionWrapper = styled(GeneralSection)`
   & > .button-wrapper {
     display: flex;
