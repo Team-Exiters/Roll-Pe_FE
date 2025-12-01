@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
-import { HeaderLogo, HeaderMenuLogo } from "../_components/ui/layouts/Header";
+import {
+  HeaderLogo,
+  HeaderMenuLogo,
+} from "../_components/molecules/ui/layouts/Header";
 
 export const metadata: Metadata = {
   title: "롤페 | Roll-Pe",

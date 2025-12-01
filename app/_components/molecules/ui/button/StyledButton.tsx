@@ -8,7 +8,8 @@ import localFont from "next/font/local";
 import Link from "next/link";
 
 const pretendard = localFont({
-  src: "../../../../public/fonts/PretendardVariable.woff2",
+  src: "../../../../../public/fonts/PretendardVariable.woff2",
+  weight: "400",
   display: "swap",
 });
 

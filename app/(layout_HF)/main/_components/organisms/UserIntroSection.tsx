@@ -2,9 +2,7 @@
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { useUserRollpeList } from "@/public/lib/hooks/fetching/rollpe/useUserRollpeList";
-import { useEffect, useState, useTransition } from "react";
 import { persistor, RootState } from "@/public/redux/store";
-import { userIntroResponse } from "@/public/utils/types";
 import { useRouter } from "next/navigation";
 import {
   ButtonLink,
