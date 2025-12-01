@@ -1,14 +1,7 @@
-import type { Metadata } from "next";
-import {
-  HeaderLogo,
-  HeaderMenuLogo,
-} from "../_components/molecules/ui/layouts/Header";
+import { HeaderDefault } from "../_components/molecules/ui/layouts/Header";
+import Footer from "../_components/molecules/ui/layouts/Footer";
 
-export const metadata: Metadata = {
-  title: "롤페 | Roll-Pe",
-  description: "모두의 마음을 모아 사랑하는 사람에게 전달해보세요.",
-};
-
+//layout_HF : Header + Footer
 export default function LogoMenuHeaderLayout({
   children,
 }: Readonly<{
@@ -16,8 +9,9 @@ export default function LogoMenuHeaderLayout({
 }>) {
   return (
     <>
-      <HeaderMenuLogo />
+      <HeaderDefault />
       {children}
+      <Footer />
     </>
   );
 }
