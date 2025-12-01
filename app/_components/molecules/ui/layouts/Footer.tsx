@@ -4,7 +4,7 @@ import { COLORS } from "@/public/styles/colors";
 import localFont from "next/font/local";
 
 export const dunggeunmo = localFont({
-  src: "../../../../public/fonts/DungGeunMo.woff2",
+  src: "../../../../../public/fonts/DungGeunMo.woff2",
   weight: "400",
   display: "swap",
   preload: true,

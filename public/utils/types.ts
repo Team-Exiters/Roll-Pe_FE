@@ -94,3 +94,21 @@ export interface HeartCreateRequestBody {
   context: string;
   location: number;
 }
+
+//! Auth 관련
+export interface SignInRequest {
+  email: string;
+  password: string;
+}
+
+export interface SignInResponse {
+  user: User;
+  access: string;
+  refresh: string;
+}
+
+export interface ApiError {
+  message: string;
+  code?: string;
+  statusCode?: number;
+}

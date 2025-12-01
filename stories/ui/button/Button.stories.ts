@@ -6,7 +6,7 @@ import {
   ButtonSubmit,
   ButtonMore,
   ButtonLink,
-} from '@/app/_components/ui/button/StyledButton';
+} from '@/app/_components/molecules/ui/button/StyledButton';
 
 // ButtonPrimary Stories
 const metaPrimary = {

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {
   ButtonSecondary,
   ButtonSubmit,
-} from "@/app/_components/ui/button/StyledButton";
+} from "@/app/_components/molecules/ui/button/StyledButton";
 import { useForm } from "react-hook-form";
 import { COLORS } from "@/public/styles/colors";
 import { useState } from "react";

@@ -8,7 +8,8 @@ import localFont from "next/font/local";
 import Link from "next/link";
 
 const pretendard = localFont({
-  src: "../../../../public/fonts/PretendardVariable.woff2",
+  src: "../../../../../public/fonts/PretendardVariable.woff2",
+  weight: "400",
   display: "swap",
 });
 
@@ -72,10 +73,33 @@ export const ButtonMore: React.FC<ButtonProps> = ({ text, onClickHandler }) => {
   return <StyledMore>{text}</StyledMore>;
 };
 
-// 링크 버튼 (단순 페이지 이동)
-export const ButtonLink: React.FC<ButtonLinkProps> = ({ text, href }) => {
+// 링크 버튼 프라이머리 (단순 페이지 이동)
+export const ButtonLinkPrimary: React.FC<ButtonLinkProps> = ({
+  text,
+  href,
+}) => {
   return (
-    <ButtonLinkWrapper className={pretendard.className} href={href}>
+    <ButtonLinkWrapper
+      className={pretendard.className}
+      href={href}
+      $primary={true}
+    >
+      {text}
+    </ButtonLinkWrapper>
+  );
+};
+
+// 링크 버튼 세컨더리 (단순 페이지 이동)
+export const ButtonLinkSecondary: React.FC<ButtonLinkProps> = ({
+  text,
+  href,
+}) => {
+  return (
+    <ButtonLinkWrapper
+      className={pretendard.className}
+      href={href}
+      $primary={false}
+    >
       {text}
     </ButtonLinkWrapper>
   );
@@ -134,15 +158,17 @@ const ButtonSubmitWrapper = styled.input.attrs({ type: "submit" })`
   }
 `;
 
-const ButtonLinkWrapper = styled(Link)`
+const ButtonLinkWrapper = styled(Link)<{ $primary: boolean }>`
   padding: 0.75rem;
   width: calc(100% - 1.5rem);
 
   border-radius: 0.5rem;
   border: 2px solid ${COLORS.ROLLPE_MAIN};
-  background-color: ${COLORS.ROLLPE_MAIN};
+  background-color: ${(props) =>
+    props.$primary ? COLORS.ROLLPE_MAIN : COLORS.ROLLPE_PRIMARY};
 
-  color: ${COLORS.ROLLPE_PRIMARY};
+  color: ${(props) =>
+    props.$primary ? COLORS.ROLLPE_PRIMARY : COLORS.ROLLPE_MAIN};
   text-align: center;
   font-size: 1rem;
   font-style: normal;
@@ -153,8 +179,10 @@ const ButtonLinkWrapper = styled(Link)`
   cursor: pointer;
 
   &:hover {
-    background-color: ${COLORS.ROLLPE_PRIMARY};
-    color: ${COLORS.ROLLPE_MAIN};
+    background-color: ${(props) =>
+      props.$primary ? COLORS.ROLLPE_PRIMARY : COLORS.ROLLPE_MAIN};
+    color: ${(props) =>
+      props.$primary ? COLORS.ROLLPE_MAIN : COLORS.ROLLPE_PRIMARY};
     transition: all 0.2s ease;
   }
 

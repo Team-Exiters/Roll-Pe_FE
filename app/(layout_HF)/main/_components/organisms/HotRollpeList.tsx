@@ -1,5 +1,5 @@
 "use client";
-import MainRollpeCard from "@/app/_components/ui/card/main-rollpe-list/MainRollpeCard";
+import MainRollpeCard from "@/app/_components/molecules/ui/card/main-rollpe-list/MainRollpeCard";
 import styled from "styled-components";
 import { Rollpe } from "@/public/utils/types";
 

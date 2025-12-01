@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@/public/styles/globals.css";
 import StyledComponentsRegistry from "@/public/lib/registry";
 import ReduxProvider from "./_components/redux-provider/ReduxProvider";
+import QueryProvider from "./_components/query-provider/QueryProvider";
 import localFont from "next/font/local";
 // import SlideMenu from "./_components/ui/layouts/SlideMenu";
 
@@ -26,29 +27,31 @@ export default function RootLayout({
       <head></head>
       <body>
         <ReduxProvider>
-          <StyledComponentsRegistry>
-            <main
-              style={{
-                position: "fixed",
-                display: "flex",
-                flexDirection: "column",
-                width: "100%",
-                maxWidth: 768,
-                height: "100%",
-                border: "1px solid #aaaaaa",
-                overflowX: "hidden",
-                overflowY: "auto",
-              }}
-            >
-              <div
+          <QueryProvider>
+            <StyledComponentsRegistry>
+              <main
                 style={{
-                  flex: 1,
+                  position: "fixed",
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "100%",
+                  maxWidth: 768,
+                  height: "100%",
+                  border: "1px solid #aaaaaa",
+                  overflowX: "hidden",
+                  overflowY: "auto",
                 }}
               >
-                {children}
-              </div>
-            </main>
-          </StyledComponentsRegistry>
+                <div
+                  style={{
+                    flex: 1,
+                  }}
+                >
+                  {children}
+                </div>
+              </main>
+            </StyledComponentsRegistry>
+          </QueryProvider>
         </ReduxProvider>
       </body>
     </html>

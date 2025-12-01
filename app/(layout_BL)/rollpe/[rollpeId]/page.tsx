@@ -9,15 +9,15 @@ import DUMMY from "@/public/images/image/image_templete.png";
 import {
   Button,
   ButtonSecondary,
-} from "@/app/_components/ui/button/StyledButton";
-import { Modal, BottomModal } from "@/app/_components/ui/modal/Modal";
-import ParticipantsList from "@/app/_components/ui/modal/modal-contents/participants-list/ParticipantsList";
-import RollpeEditForm from "@/app/_components/ui/modal/modal-contents/rollpe-edit/RollpeEditForm";
-import ShareRollpe from "@/app/_components/ui/modal/modal-contents/share-rollpe/ShareRollpe";
+} from "@/app/_components/molecules/ui/button/StyledButton";
+import { Modal, BottomModal } from "@/app/_components/molecules/ui/modal/Modal";
+import ParticipantsList from "@/app/_components/molecules/ui/modal/modal-contents/participants-list/ParticipantsList";
+import RollpeEditForm from "@/app/_components/molecules/ui/modal/modal-contents/rollpe-edit/RollpeEditForm";
+import ShareRollpe from "@/app/_components/molecules/ui/modal/modal-contents/share-rollpe/ShareRollpe";
 import Marquee from "react-fast-marquee";
 import { User, Rollpe } from "@/public/utils/types";
 import { getRollpeDetail } from "@/public/utils/apis/rollpe";
-import Loading from "@/app/_components/ui/loading/Loading";
+import Loading from "@/app/_components/molecules/ui/loading/Loading";
 import { useRouter } from "next/navigation";
 import RollpePreview from "@/app/_components/rollpe/RollpePreview";
 

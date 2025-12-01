@@ -1,12 +1,12 @@
 "use client";
 import styled from "styled-components";
-import { StyledInput, Checkbox } from "@/app/_components/ui/input/Input";
-import { ButtonSubmit } from "@/app/_components/ui/button/StyledButton";
+import { StyledInput, Checkbox } from "@/app/_components/molecules/ui/input/Input";
+import { ButtonSubmit } from "@/app/_components/molecules/ui/button/StyledButton";
 import { useForm } from "react-hook-form";
 import { useEffect, useState, useTransition } from "react";
 import { COLORS } from "@/public/styles/colors";
 import { signUp } from "@/public/utils/apis/signUp";
-import Loading from "@/app/_components/ui/loading/Loading";
+import Loading from "@/app/_components/molecules/ui/loading/Loading";
 
 interface SignUpInputs {
   email: string;

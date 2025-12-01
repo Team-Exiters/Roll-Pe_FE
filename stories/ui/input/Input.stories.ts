@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { fn } from 'storybook/test';
-import { SearchInput, Checkbox } from '@/app/_components/ui/input/Input';
+import { SearchInput, Checkbox } from '@/app/_components/molecules/ui/input/Input';
 
 // SearchInput Stories
 const metaSearchInput = {

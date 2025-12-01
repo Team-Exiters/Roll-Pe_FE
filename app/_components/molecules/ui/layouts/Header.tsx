@@ -23,13 +23,7 @@ export const HeaderDefault: React.FC = () => {
     <>
       <HeaderWrapper left={false}>
         <MenuButton onClick={() => onClickMenuHandler()}>
-          <Image
-            src={Menu}
-            layout="responsive"
-            width={28}
-            height={28}
-            alt={"메뉴 아이콘"}
-          />
+          <Image src={Menu} alt={"메뉴 아이콘"} fill priority />
         </MenuButton>
       </HeaderWrapper>
       {<SlideMenu isSlideOpen={isSlideOpen} setIsSlideOpen={setIsSlideOpen} />}
@@ -163,14 +157,10 @@ const LogoHeaderWrapper = styled(HeaderWrapper)`
 
 const MenuButton = styled.button`
   all: unset;
+  position: relative;
   width: 1.75rem;
   height: 1.75rem;
   cursor: pointer;
-
-  & > img {
-    width: 100%;
-    height: 100%;
-  }
 `;
 
 const BackButton = styled(MenuButton)`
