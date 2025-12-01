@@ -1,6 +1,6 @@
 import OnBoardingGuide from "./OnBoardingSections/OnBoardingGuide";
 import OnBoardingIntro from "./OnBoardingSections/OnBoardingIntro";
-import Footer from "../ui/layouts/Footer";
+import Footer from "../molecules/ui/layouts/Footer";
 import localFont from "next/font/local";
 import introImage01 from "@/public/images/image/image_section_1.png";
 import introImage02 from "@/public/images/image/image_section_2.png";
