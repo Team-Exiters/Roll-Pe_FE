@@ -45,6 +45,8 @@ const UserIntroSection: React.FC = () => {
 };
 
 const SectionWrapper = styled(GeneralSection)`
+  padding-top: 0rem;
+
   & > .button-wrapper {
     display: flex;
     flex-direction: column;
