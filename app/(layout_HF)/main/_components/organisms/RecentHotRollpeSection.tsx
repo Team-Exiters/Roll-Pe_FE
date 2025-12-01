@@ -2,8 +2,7 @@
 import styled from "styled-components";
 import { COLORS } from "@/public/styles/colors";
 import { GeneralSection } from "@/public/styles/styled-components/main/main.style";
-
-import HotRollpeList from "../ui/list/Hot/HotRollpeList";
+import HotRollpeList from "@/app/_components/molecules/list/Hot/HotRollpeList";
 
 import { Rollpe } from "@/public/utils/types";
 
