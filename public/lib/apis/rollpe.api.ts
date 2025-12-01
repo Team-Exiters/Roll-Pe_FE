@@ -1,44 +1,67 @@
 "use server";
 import { RollpeRequestBody } from "@/app/(layout_BL)/rollpe/create/_components/form/RollpeCreateForm";
 import { axiosInstance, axiosInstanceAuth } from "@/public/axios/axiosInstance";
+import { Rollpe } from "@/public/utils/types";
+import { userIntroResponse } from "@/public/utils/types";
 
-
-export const getRollpeList = async (queryParam: "invited" | "main") => {
-  return await axiosInstanceAuth.get(`/api/paper/user?type=${queryParam}`).then((response) => {
-    return Promise.resolve(response.data.data.result);
-  }).catch((error) => {
-    return Promise.reject(error);
-  })
-
+// 단순 롤페 리스트
+const callRollpeList = async (queryParam: "invited" | "main" | "hot" | "my") => {
+  const response = await axiosInstanceAuth.get(`/api/paper/user?type=${queryParam}`);
+  return response.data.data;
 }
 
-//TODO: 리팩토링 필요 - 쿼리파람
-export const getHotRollpeList = async () => {
-  return await axiosInstance.get(`/api/paper/user?type=hot`).then((response) => {
-    console.log(response.data);
-    return Promise.resolve(response.data.data);
-  }).catch((error) => {
-    console.log(error);
-    return Promise.reject(error);
-  });
-}
-
-export const getUserRollpeList = async (queryParam: "my" | "main" | "hot") => {
-  return await axiosInstanceAuth.get(`/api/paper/user?type=${queryParam}`).then((response) => {
-    console.log(response.data);
-    return Promise.resolve(response.data.data);
-  }).catch((error) => {
-    return Promise.reject(error);
-  })
-}
-
-export const getUserRollpe = async (queryParam: "my" | "main" | "invited" | "hot") => {
+// 단순 사용자 롤페 리스트
+const callUserRollpeList = async (queryParam: "invited" | "main" | "hot" | "my") => {
   return await axiosInstanceAuth.get(`/api/paper/mypage?type=${queryParam}`).then((response) => {
     console.log(response.data);
     return Promise.resolve(response.data.data);
   }).catch((error) => {
     return Promise.reject(error);
   });
+}
+
+// 단순 롤페 리스트 함수
+export async function getRollpeList(queryParam: "invited" | "main" | "hot" | "my"): Promise<Rollpe[]> {
+  try {
+    const response = await callRollpeList(queryParam);
+    return response;
+  } catch (error) {
+    if (error && typeof error === 'object' && 'response' in error) {
+      const axiosError = error as any;
+      const apiError = {
+        message: axiosError.response?.data?.message || "롤페 리스트를 불러오는데 실패했습니다",
+        code: axiosError.response?.data?.code,
+        statusCode: axiosError.response?.status,
+      };
+      throw apiError;
+    }
+    throw {
+      message: "네트워크 오류가 발생했습니다",
+      statusCode: 0,
+    };
+  }
+}
+
+// 사용자 롤페 리스트 호출 함수
+export async function getUserRollpeList(queryParam: "invited" | "main" | "hot" | "my"): Promise<userIntroResponse> {
+  try {
+    const response = await callUserRollpeList(queryParam);
+    return response;
+  } catch (error) {
+    if (error && typeof error === 'object' && 'response' in error) {
+      const axiosError = error as any;
+      const apiError = {
+        message: axiosError.response?.data?.message || "사용자 롤페 리스트를 불러오는데 실패했습니다",
+        code: axiosError.response?.data?.code,
+        statusCode: axiosError.response?.status,
+      };
+      throw apiError;
+    }
+    throw {
+      message: "네트워크 오류가 발생했습니다",
+      statusCode: 0,
+    };
+  }
 }
 
 
