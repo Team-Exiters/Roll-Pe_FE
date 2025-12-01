@@ -10,7 +10,7 @@ import {
   ButtonLink,
   ButtonPrimary,
   ButtonSecondary,
-} from "@/app/_components/ui/button/StyledButton";
+} from "@/app/_components/molecules/ui/button/StyledButton";
 import { GeneralSection } from "@/public/styles/styled-components/main/main.style";
 
 const UserIntroSection: React.FC = () => {

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 import UserIntroSection from "./_components/organisms/UserIntroSection";
 import RecentHotRollpeSection from "./_components/organisms/RecentHotRollpeSection";
-import Loading from "@/app/_components/ui/loading/Loading";
+import Loading from "@/app/_components/molecules/ui/loading/Loading";
 
 // import { getHotRollpeList } from "@/public/lib/apis/rollpe.api";
 import { Rollpe } from "@/public/utils/types";

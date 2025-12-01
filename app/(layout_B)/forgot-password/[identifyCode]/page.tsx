@@ -2,14 +2,14 @@
 import { useState, useEffect, useTransition } from "react";
 import styled from "styled-components";
 import { COLORS } from "@/public/styles/colors";
-import { ButtonSubmit } from "@/app/_components/ui/button/StyledButton";
-import { StyledInput } from "@/app/_components/ui/input/Input";
+import { ButtonSubmit } from "@/app/_components/molecules/ui/button/StyledButton";
+import { StyledInput } from "@/app/_components/molecules/ui/input/Input";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
 import Logo from "@/public/images/logos/logo.korean.png";
 import { useParams, useRouter } from "next/navigation";
 import { patchChangePassword } from "@/public/utils/apis/forgotPassword";
-import Loading from "@/app/_components/ui/loading/Loading";
+import Loading from "@/app/_components/molecules/ui/loading/Loading";
 
 interface ChangePasswordInputs {
   password: string;

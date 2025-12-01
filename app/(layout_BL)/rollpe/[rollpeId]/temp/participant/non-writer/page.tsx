@@ -2,7 +2,7 @@
 import styled from "styled-components";
 import Image from "next/image";
 import Logo from "@/public/images/logos/logo.korean.png";
-import { Button } from "@/app/_components/ui/button/StyledButton";
+import { Button } from "@/app/_components/molecules/ui/button/StyledButton";
 
 const NonWriterPage: React.FC = () => {
   return (

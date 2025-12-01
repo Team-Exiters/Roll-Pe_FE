@@ -8,7 +8,7 @@ import REPORT from "@/public/images/icons/icon_siren.svg";
 import {
   Button,
   ButtonSecondary,
-} from "@/app/_components/ui/button/StyledButton";
+} from "@/app/_components/molecules/ui/button/StyledButton";
 import Marquee from "react-fast-marquee";
 
 const RollpeDetailPage: React.FC = () => {

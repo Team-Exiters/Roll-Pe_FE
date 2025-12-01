@@ -6,8 +6,8 @@ import { RollpeList } from "@/app/_components/molecules/list/RollpeList";
 import { Rollpe } from "@/public/utils/types";
 import { useEffect, useState, useTransition } from "react";
 import { getUserRollpeList } from "@/public/utils/apis/rollpe";
-import Loading from "@/app/_components/ui/loading/Loading";
-import { ButtonMore } from "@/app/_components/ui/button/StyledButton";
+import Loading from "@/app/_components/molecules/ui/loading/Loading";
+import { ButtonMore } from "@/app/_components/molecules/ui/button/StyledButton";
 
 interface MyRollpeListData {
   count: number;

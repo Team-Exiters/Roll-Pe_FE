@@ -2,7 +2,7 @@
 import { ChangeEvent, useEffect, useState, useTransition } from "react";
 import styled from "styled-components";
 import { COLORS } from "@/public/styles/colors";
-import { StyledInput } from "@/app/_components/ui/input/Input";
+import { StyledInput } from "@/app/_components/molecules/ui/input/Input";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper/modules";
 import "swiper/css";
@@ -12,15 +12,15 @@ import {
   RatioSwiperCard,
   ThemeSwiperCard,
   SizeSwiperCard,
-} from "@/app/_components/ui/card/create-rollpe-swiper/CreateRollpeSipwerCard";
+} from "@/app/_components/molecules/ui/card/create-rollpe-swiper/CreateRollpeSipwerCard";
 import Image from "next/image";
 import DUMMY from "@/public/images/image/image_templete.png";
-import { Button } from "@/app/_components/ui/button/StyledButton";
-import { Modal } from "@/app/_components/ui/modal/Modal";
-import ReceiverSelect from "@/app/_components/ui/modal/modal-contents/receiver-select/ReceiverSelect";
+import { Button } from "@/app/_components/molecules/ui/button/StyledButton";
+import { Modal } from "@/app/_components/molecules/ui/modal/Modal";
+import ReceiverSelect from "@/app/_components/molecules/ui/modal/modal-contents/receiver-select/ReceiverSelect";
 import { getRollpeCreateDetail } from "@/public/utils/apis/rollpe";
 import { logOutOk } from "@/public/utils/apis/logOut";
-import Loading from "@/app/_components/ui/loading/Loading";
+import Loading from "@/app/_components/molecules/ui/loading/Loading";
 import { useSelector } from "react-redux";
 import { RootState } from "@/public/redux/store";
 import { postCreateRollpe } from "@/public/utils/apis/rollpe";

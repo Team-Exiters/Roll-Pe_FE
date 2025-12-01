@@ -1,6 +1,6 @@
 "use client";
 
-import Loading from "@/app/_components/ui/loading/Loading";
+import Loading from "@/app/_components/molecules/ui/loading/Loading";
 import GoogleAuthHandler from "./GoogleAuthHandler";
 
 const KakaoRedirectPage: React.FC = () => {

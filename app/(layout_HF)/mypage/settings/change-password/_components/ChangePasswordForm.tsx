@@ -1,8 +1,8 @@
 "use client";
 import styled from "styled-components";
-import { ButtonSubmit } from "@/app/_components/ui/button/StyledButton";
+import { ButtonSubmit } from "@/app/_components/molecules/ui/button/StyledButton";
 import { COLORS } from "@/public/styles/colors";
-import { StyledInput } from "@/app/_components/ui/input/Input";
+import { StyledInput } from "@/app/_components/molecules/ui/input/Input";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 

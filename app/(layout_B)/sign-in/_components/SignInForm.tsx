@@ -2,9 +2,9 @@
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { useSignIn } from "@/public/lib/hooks/fetching/useSignIn";
-import { ButtonSubmit } from "@/app/_components/ui/button/StyledButton";
-import { StyledInput } from "@/app/_components/ui/input/Input";
-import Loading from "@/app/_components/ui/loading/Loading";
+import { ButtonSubmit } from "@/app/_components/molecules/ui/button/StyledButton";
+import { StyledInput } from "@/app/_components/molecules/ui/input/Input";
+import Loading from "@/app/_components/molecules/ui/loading/Loading";
 import { SignInRequest } from "@/public/utils/types";
 
 const SignInForm: React.FC = () => {

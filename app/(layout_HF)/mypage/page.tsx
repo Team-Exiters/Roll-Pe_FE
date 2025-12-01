@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/public/redux/store";
 import { useTransition } from "react";
 import { logOutOk } from "@/public/utils/apis/logOut";
-import Loading from "@/app/_components/ui/loading/Loading";
+import Loading from "@/app/_components/molecules/ui/loading/Loading";
 import { persistor } from "@/public/redux/store";
 import { useRouter } from "next/navigation";
 import { getUserRollpe } from "@/public/utils/apis/rollpe";

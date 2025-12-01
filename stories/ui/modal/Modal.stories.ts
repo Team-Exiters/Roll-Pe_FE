@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { fn } from 'storybook/test';
-import { Modal, BottomModal } from '@/app/_components/ui/modal/Modal';
+import { Modal, BottomModal } from '@/app/_components/molecules/ui/modal/Modal';
 
 // Modal Stories
 const metaModal = {
