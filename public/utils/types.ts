@@ -69,7 +69,7 @@ export interface User {
   identifyCode: string;
   name: string;
   email: string;
-  provider: "Apple" | "Google" | "Kakao" | "Email" | null;
+  provider: "Apple" | "Google" | "Kakao" | "Email";
 }
 
 export interface RollpeInstance {
