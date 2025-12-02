@@ -1,46 +1,44 @@
 "use client";
 import styled from "styled-components";
 import { COLORS } from "@/public/styles/colors";
-
-import {
-  Rollpe,
-  RollpeListItemProps,
-  // RollpeListProps,
-  SearchRollpeProps,
-} from "@/public/utils/types";
+import { Rollpe, SearchRollpeProps } from "@/public/utils/types";
 import { RollpeListItem, RollpeSearchListItem } from "./RollpeListItem";
 import Image from "next/image";
 import NoneList from "@/public/images/icons/icon_non_list.svg";
-import { useEffect } from "react";
+import { ButtonMore } from "../ui/button/StyledButton";
+import { useInfiniteRollpeList } from "@/public/lib/hooks/fetching/rollpe/useInfiniteRollpeList";
+import Loading from "../ui/loading/Loading";
 
-interface RollpeListProps {
-  list: Rollpe[];
-  count: number;
-  resultText: string;
+interface RollpeListTypeProps {
+  type: "invited" | "main" | "hot" | "my";
 }
+export const RollpeList: React.FC<RollpeListTypeProps> = ({ type }) => {
+  const { data, fetchNextPage, hasNextPage, isLoading } =
+    useInfiniteRollpeList(type);
 
-export const RollpeList: React.FC<RollpeListProps> = (
-  listData: RollpeListProps
-) => {
-  const { list, count, resultText } = listData;
 
-  useEffect(() => {
-    console.log(list);
-  }, [list]);
-
-  return (
-    <RollpeListWrapper>
-      <div className={"count-wrapper"}>
-        <em>
-          총 {count}개{resultText}
-        </em>
-      </div>
-      <RollpeListContainer>
-        {list.map((rollpe: Rollpe, _: number) => (
-          <RollpeListItem key={rollpe.code} {...rollpe} />
-        ))}
-      </RollpeListContainer>
-    </RollpeListWrapper>
+  return isLoading ? (
+    <Loading />
+  ) : (
+    data && (
+      <RollpeListWrapper>
+        <div className={"count-wrapper"}>
+          <em>
+            총 {data.pages[0].count}개{data.pages[0].resultText}
+          </em>
+        </div>
+        <RollpeListContainer>
+          {data.pages.map((page) =>
+            page.results.map((rollpe: Rollpe) => (
+              <RollpeListItem key={rollpe.code} {...rollpe} />
+            ))
+          )}
+        </RollpeListContainer>
+        {hasNextPage && (
+          <ButtonMore text={"더보기"} onClickHandler={fetchNextPage} />
+        )}
+      </RollpeListWrapper>
+    )
   );
 };
 
@@ -105,7 +103,8 @@ const RollpeListContainer = styled.ul`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 36rem;
+  /* height: 36rem; */
+  padding-left: 0px;
 `;
 
 const NonRollpeListContainer = styled.div`
@@ -127,7 +126,6 @@ const NonRollpeListContainer = styled.div`
     }
 
     & > p {
-      font-family: var(--font-hakgyoansim);
       color: ${COLORS.ROLLPE_GRAY};
       text-align: center;
       font-size: 1.25rem;

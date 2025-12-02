@@ -35,7 +35,10 @@ export const ButtonPrimary: React.FC<ButtonProps> = ({
 }) => {
   return (
     onClickHandler && (
-      <ButtonWrapper className={pretendard.className} onClick={onClickHandler}>
+      <ButtonWrapper
+        className={pretendard.className}
+        onClick={() => onClickHandler()}
+      >
         {text}
       </ButtonWrapper>
     )
@@ -70,7 +73,7 @@ export const ButtonSubmit: React.FC<SubmitProps> = ({ text, isDisabled }) => {
 
 // 더보기 버튼
 export const ButtonMore: React.FC<ButtonProps> = ({ text, onClickHandler }) => {
-  return <StyledMore>{text}</StyledMore>;
+  return <StyledMore onClick={onClickHandler}>{text}</StyledMore>;
 };
 
 // 링크 버튼 프라이머리 (단순 페이지 이동)

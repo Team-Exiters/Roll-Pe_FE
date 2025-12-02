@@ -1,18 +1,18 @@
 "use server";
 import { RollpeRequestBody } from "@/app/(layout_BL)/rollpe/create/_components/form/RollpeCreateForm";
 import { axiosInstance, axiosInstanceAuth } from "@/public/axios/axiosInstance";
-import { Rollpe } from "@/public/utils/types";
+import { Rollpe, RollpeListProps } from "@/public/utils/types";
 import { userIntroResponse } from "@/public/utils/types";
 
 // 단순 롤페 리스트
-const callRollpeList = async (queryParam: "invited" | "main" | "hot" | "my") => {
-  const response = await axiosInstanceAuth.get(`/api/paper/user?type=${queryParam}`);
+const callRollpeList = async (queryParam: "invited" | "main" | "hot" | "my", page: number) => {
+  const response = await axiosInstanceAuth.get(`/api/paper/user?page=${page}&type=${queryParam}`);
   return response.data.data;
 }
 
 // 단순 사용자 롤페 리스트
 const callUserRollpeList = async (queryParam: "invited" | "main" | "hot" | "my") => {
-  return await axiosInstanceAuth.get(`/api/paper/mypage?type=${queryParam}`).then((response) => {
+  return await axiosInstanceAuth.get(`/api/paper/mypage?page=&type=${queryParam}`).then((response) => {
     console.log(response.data);
     return Promise.resolve(response.data.data);
   }).catch((error) => {
@@ -21,9 +21,9 @@ const callUserRollpeList = async (queryParam: "invited" | "main" | "hot" | "my")
 }
 
 // 단순 롤페 리스트 함수
-export async function getRollpeList(queryParam: "invited" | "main" | "hot" | "my"): Promise<Rollpe[]> {
+export async function getRollpeList(queryParam: "invited" | "main" | "hot" | "my", page: number): Promise<RollpeListProps> {
   try {
-    const response = await callRollpeList(queryParam);
+    const response = await callRollpeList(queryParam, page);
     return response;
   } catch (error) {
     if (error && typeof error === 'object' && 'response' in error) {

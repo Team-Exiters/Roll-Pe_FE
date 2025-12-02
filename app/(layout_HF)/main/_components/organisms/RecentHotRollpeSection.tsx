@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { COLORS } from "@/public/styles/colors";
 import { GeneralSection } from "@/public/styles/styled-components/main/main.style";
 import HotRollpeList from "./HotRollpeList";
+import { useInfiniteRollpeList } from "@/public/lib/hooks/fetching/rollpe/useInfiniteRollpeList";
 import { useRollpeList } from "@/public/lib/hooks/fetching/rollpe/useRollpeList";
 
 // 최근 뜨고 있는 롤페 섹션
