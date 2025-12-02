@@ -164,6 +164,14 @@ const BasicInfoWrapper = styled.div`
       & > .Apple {
         background-color: ${COLORS.ROLLPE_SECONDARY};
       }
+
+      & > .Google {
+        background-color: ${COLORS.ROLLPE_PRIMARY};
+      }
+
+      & > .Kakao {
+        background-color: #fee500;
+      }
     }
   }
 `;
