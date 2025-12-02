@@ -1,22 +1,21 @@
 "use client";
 import styled from "styled-components";
 import { COLORS } from "@/public/styles/colors";
-
 import { Rollpe, SearchRollpeProps } from "@/public/utils/types";
 import { RollpeListItem, RollpeSearchListItem } from "./RollpeListItem";
 import Image from "next/image";
 import NoneList from "@/public/images/icons/icon_non_list.svg";
 import { ButtonMore } from "../ui/button/StyledButton";
-import { useRollpeList } from "@/public/lib/hooks/fetching/rollpe/useRollpeList";
+import { useInfiniteRollpeList } from "@/public/lib/hooks/fetching/rollpe/useInfiniteRollpeList";
 import Loading from "../ui/loading/Loading";
 
 interface RollpeListTypeProps {
   type: "invited" | "main" | "hot" | "my";
 }
 export const RollpeList: React.FC<RollpeListTypeProps> = ({ type }) => {
-  const { data, fetchNextPage, hasNextPage, isLoading } = useRollpeList(type);
+  const { data, fetchNextPage, hasNextPage, isLoading } =
+    useInfiniteRollpeList(type);
 
-  console.log(hasNextPage);
 
   return isLoading ? (
     <Loading />
