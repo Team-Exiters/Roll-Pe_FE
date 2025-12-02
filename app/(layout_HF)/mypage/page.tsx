@@ -1,7 +1,10 @@
 "use client";
 import styled from "styled-components";
 import { COLORS } from "@/public/styles/colors";
+import { StaticImageData } from "next/image";
 import Apple from "@/public/images/icons/icon_apple.svg";
+import Kakao from "@/public/images/icons/icon_kakao.svg";
+import Google from "@/public/images/icons/icon_google.svg";
 import Image from "next/image";
 import Link from "next/link";
 import Loading from "@/app/_components/molecules/ui/loading/Loading";
@@ -17,6 +20,12 @@ const hakgyoansim = localFont({
   display: "swap",
 });
 
+const USER_PROVIDER: Record<string, StaticImageData> = {
+  Apple: Apple,
+  Google: Google,
+  Kakao: Kakao,
+};
+
 const MyPage: React.FC = () => {
   const { data: userRollpeCount } = useUserRollpeList("main");
   const { mutate, isPending } = useLogout();
@@ -31,24 +40,26 @@ const MyPage: React.FC = () => {
           <h1>마이페이지</h1>
 
           <MyPageProfileWrapper>
-            <div className={"profile-container"}>
-              <div className={"basic-info-wrapper"}>
+            <ProfileContainer>
+              <BasicInfoWrapper>
                 <div className={"user-name-container"}>
-                  <h2 className={"user-name"}>{user.name}님</h2>
-                  <button className={"social-icon-wrapper apple"}>
-                    <Image
-                      src={Apple}
-                      width={10}
-                      height={10}
-                      alt={"Apple 로그인"}
-                    />
-                  </button>
+                  <div className={"user-name"}>{user.name}님</div>
+                  {user.provider && (
+                    <div className={`social-icon-wrapper ${user.provider}`}>
+                      <div className={"image-wrapper"}>
+                        <Image
+                          src={USER_PROVIDER[user.provider]}
+                          alt={`${user.provider} 로그인`}
+                        />
+                      </div>
+                    </div>
+                  )}
                 </div>
-                <p className={"user-id"}>{user.email}</p>
-              </div>
+                <div className={"user-id"}>{user.email}</div>
+              </BasicInfoWrapper>
 
               <UserRollpeStatus />
-            </div>
+            </ProfileContainer>
           </MyPageProfileWrapper>
 
           <MyPageMenuContainer>
@@ -87,6 +98,7 @@ const MyPage: React.FC = () => {
 const MyPageWrapper = styled.main`
   padding-bottom: 10.375rem;
   width: 100%;
+  color: ${COLORS.ROLLPE_SECONDARY};
 `;
 
 const MyPageContainer = styled.div`
@@ -99,7 +111,6 @@ const MyPageContainer = styled.div`
   width: calc(100% - 2.5rem);
 
   & > h1 {
-    color: ${COLORS.ROLLPE_SECONDARY};
     text-align: center;
     font-size: 2rem;
     font-style: normal;
@@ -111,63 +122,49 @@ const MyPageContainer = styled.div`
 const MyPageProfileWrapper = styled.div`
   display: flex;
   width: 100%;
+`;
 
-  & > .profile-container {
+const ProfileContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+`;
+
+const BasicInfoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 3.375rem;
+
+  & > .user-name-container {
     display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+    align-items: center;
+    gap: 0.25rem;
 
-    & > .basic-info-wrapper {
+    & > .user-name {
+      font-size: 1.5rem;
+    }
+
+    & > .social-icon-wrapper {
+      all: unset;
       display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-      margin-top: 3.375rem;
+      justify-content: center;
+      align-items: center;
 
-      & > p {
-        color: ${COLORS.ROLLPE_SECONDARY};
-        font-size: 0.875rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 50%;
+
+      & > .image-wrapper {
+        position: relative;
+        width: 0.625rem;
+        height: 0.625rem;
       }
 
-      & > .user-name-container {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-
-        & > h2 {
-          color: ${COLORS.ROLLPE_SECONDARY};
-          font-size: 1.5rem;
-          font-style: normal;
-          font-weight: 400;
-          line-height: normal;
-        }
-
-        & > .social-icon-wrapper {
-          all: unset;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-
-          width: 1.25rem;
-          height: 1.25rem;
-          border-radius: 50%;
-
-          cursor: pointer;
-        }
-
-        & > .apple {
-          background-color: ${COLORS.ROLLPE_SECONDARY};
-        }
+      & > .Apple {
+        background-color: ${COLORS.ROLLPE_SECONDARY};
       }
     }
-  }
-
-  & > .user-rollpe-status-container {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
   }
 `;
 
@@ -175,16 +172,13 @@ const MyPageMenuContainer = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
   margin-top: 3rem;
+  padding-left: 0px;
   width: 100%;
+  list-style: none;
 
   & > li {
-    color: ${COLORS.ROLLPE_SECONDARY};
     font-size: 1.25rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
 
     cursor: pointer;
 
@@ -198,7 +192,8 @@ const MyPageMenuContainer = styled.ul`
     }
   }
 
-  & > li:last-child {
+  & > li:first-child,
+  li:last-child {
     color: ${COLORS.ROLLPE_GRAY};
   }
 `;
