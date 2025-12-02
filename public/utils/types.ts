@@ -1,6 +1,12 @@
-import { StaticGenerationAsyncStorage } from "next/dist/client/components/static-generation-async-storage.external";
-
 //! Rollpe List 관련
+
+export interface RollpeListProps {
+  results: Rollpe[];
+  count: number;
+  next: string | null;
+  previous: string | null;
+  resultText: string;
+}
 export interface RollpeListItemProps {
   rollpeId: string;
   rollpeTitle: string;

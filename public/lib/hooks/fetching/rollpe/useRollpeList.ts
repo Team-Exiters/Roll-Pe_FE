@@ -1,14 +1,29 @@
-import { useQuery } from "@tanstack/react-query";
-import { Rollpe } from "@/public/utils/types";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import { RollpeListProps } from "@/public/utils/types";
 import { getRollpeList } from "@/public/lib/apis/rollpe.api";
 
 
 export const useRollpeList = (queryParam: "invited" | "main" | "hot" | "my") => {
-  return useQuery<Rollpe[]>({
-    queryKey: ['rollpeList', queryParam],
-    queryFn: () => getRollpeList(queryParam),
-    staleTime: 5 * 60 * 1000,
-    gcTime: 10 * 60 * 1000,
-    retry: 1,
+  return useInfiniteQuery<RollpeListProps, any>({
+    queryKey: ["rollpeList", queryParam],
+    queryFn: ({ pageParam = 1 }) => getRollpeList(queryParam, pageParam as number),
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) => {
+      //페이지 파라미터 분리
+      return convertPageParam(lastPage);
+    },
   });
-}; 
+};
+
+const convertPageParam = (lastPage: RollpeListProps) => {
+  const nextUrl = lastPage.next;
+
+  if (!nextUrl) return undefined;
+
+  const url = new URL(nextUrl);
+  const page = url.searchParams.get("page");
+
+  return page ? Number(page) : undefined;
+}
+
+
