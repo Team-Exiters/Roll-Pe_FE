@@ -9,6 +9,7 @@ import {
   ButtonLinkSecondary,
 } from "@/app/_components/molecules/ui/button/StyledButton";
 import { GeneralSection } from "@/public/styles/styled-components/main/main.style";
+import UserRollpeStatus from "@/app/_components/molecules/userInfo/UserRollpeStatus";
 
 const UserIntroSection: React.FC = () => {
   const { data, isError } = useUserRollpeList("main");
@@ -29,8 +30,7 @@ const UserIntroSection: React.FC = () => {
         <IntroWrapper>
           <h1>유저 롤페 현황 및 작성하러 가기{/**이거 hidden, SEO용 */}</h1>
           <em>{user.name}님은</em>
-          <div>{data.host}개의 롤페를 만드셨어요.</div>
-          <div>{data.heart}개의 마음을 작성하셨어요.</div>
+          <UserRollpeStatus />
         </IntroWrapper>
         <div className={"button-wrapper"}>
           <ButtonLinkPrimary
