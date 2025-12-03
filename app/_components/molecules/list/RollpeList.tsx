@@ -7,6 +7,7 @@ import Image from "next/image";
 import NoneList from "@/public/images/icons/icon_non_list.svg";
 import { ButtonMore } from "../ui/button/StyledButton";
 import { useInfiniteRollpeList } from "@/public/lib/hooks/fetching/rollpe/useInfiniteRollpeList";
+import { useUserRollpeList } from "@/public/lib/hooks/fetching/rollpe/useUserRollpeList";
 import Loading from "../ui/loading/Loading";
 import { RollpeReqeustQueryParam } from "@/public/utils/types";
 
@@ -15,10 +16,38 @@ type RollpeListProps = {
 };
 
 export const RollpeList: React.FC<RollpeListProps> = ({ type }) => {
+  const { data, isLoading } = useUserRollpeList(type);
+
+  console.log("씨발");
+  console.log(data);
+
+  return isLoading ? (
+    <Loading />
+  ) : (
+    data && (
+      <RollpeListWrapper>
+        <div className={"count-wrapper"}>
+          <em>총 {data.length}개</em>
+        </div>
+        <RollpeListContainer>
+          {data.map((rollpe: Rollpe) => (
+            <RollpeListItem key={rollpe.code} {...rollpe} />
+          ))}
+        </RollpeListContainer>
+        {/* {hasNextPage && (
+          <ButtonMore text={"더보기"} onClickHandler={fetchNextPage} />
+        )} */}
+      </RollpeListWrapper>
+    )
+  );
+};
+
+export const InfiniteRollpeList: React.FC<RollpeListProps> = ({ type }) => {
   const { data, fetchNextPage, hasNextPage, isLoading } =
     useInfiniteRollpeList(type);
 
   console.log(data);
+
   return isLoading ? (
     <Loading />
   ) : (
@@ -85,6 +114,7 @@ const RollpeListWrapper = styled.section`
   gap: 1.25rem;
 
   width: 100%;
+  flex: 1;
 
   & > .count-wrapper {
     display: flex;
