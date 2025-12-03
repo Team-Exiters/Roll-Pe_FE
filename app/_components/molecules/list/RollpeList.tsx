@@ -10,12 +10,11 @@ import { useInfiniteRollpeList } from "@/public/lib/hooks/fetching/rollpe/useInf
 import Loading from "../ui/loading/Loading";
 
 interface RollpeListTypeProps {
-  type: "invited" | "main" | "hot" | "my";
+  type: "inviting" | "main" | "hot" | "my";
 }
 export const RollpeList: React.FC<RollpeListTypeProps> = ({ type }) => {
   const { data, fetchNextPage, hasNextPage, isLoading } =
     useInfiniteRollpeList(type);
-
 
   return isLoading ? (
     <Loading />

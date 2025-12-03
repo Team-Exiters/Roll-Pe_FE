@@ -5,13 +5,13 @@ import { Rollpe, RollpeListProps } from "@/public/utils/types";
 import { userIntroResponse } from "@/public/utils/types";
 
 // 단순 롤페 리스트
-const callRollpeList = async (queryParam: "invited" | "main" | "hot" | "my", page: number) => {
+const callRollpeList = async (queryParam: "inviting" | "main" | "hot" | "my", page: number) => {
   const response = await axiosInstanceAuth.get(`/api/paper/user?page=${page}&type=${queryParam}`);
   return response.data.data;
 }
 
 // 단순 사용자 롤페 리스트
-const callUserRollpeList = async (queryParam: "invited" | "main" | "hot" | "my") => {
+const callUserRollpeList = async (queryParam: "inviting" | "main" | "hot" | "my") => {
   return await axiosInstanceAuth.get(`/api/paper/mypage?page=&type=${queryParam}`).then((response) => {
     console.log(response.data);
     return Promise.resolve(response.data.data);
@@ -21,7 +21,7 @@ const callUserRollpeList = async (queryParam: "invited" | "main" | "hot" | "my")
 }
 
 // 단순 롤페 리스트 함수
-export async function getRollpeList(queryParam: "invited" | "main" | "hot" | "my", page: number): Promise<RollpeListProps> {
+export async function getRollpeList(queryParam: "inviting" | "main" | "hot" | "my", page: number): Promise<RollpeListProps> {
   try {
     const response = await callRollpeList(queryParam, page);
     return response;
@@ -43,7 +43,7 @@ export async function getRollpeList(queryParam: "invited" | "main" | "hot" | "my
 }
 
 // 사용자 롤페 리스트 호출 함수
-export async function getUserRollpeList(queryParam: "invited" | "main" | "hot" | "my"): Promise<userIntroResponse> {
+export async function getUserRollpeList(queryParam: "inviting" | "main" | "hot" | "my"): Promise<userIntroResponse> {
   try {
     const response = await callUserRollpeList(queryParam);
     return response;

@@ -18,7 +18,7 @@ const InvitedRollpePage: React.FC = () => {
         <div className={"title-wrapper"}>
           <h1>초대받은 롤페</h1>
         </div>
-        <RollpeList type={"invited"} />
+        <RollpeList type={"inviting"} />
       </MyRollpeContainer>
     </MyRollpeWrapper>
   );

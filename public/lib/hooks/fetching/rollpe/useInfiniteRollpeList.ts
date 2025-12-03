@@ -3,7 +3,7 @@ import { RollpeListProps } from "@/public/utils/types";
 import { getRollpeList } from "@/public/lib/apis/rollpe.api";
 
 
-export const useInfiniteRollpeList = (queryParam: "invited" | "main" | "hot" | "my") => {
+export const useInfiniteRollpeList = (queryParam: "inviting" | "main" | "hot" | "my") => {
   return useInfiniteQuery<RollpeListProps, any>({
     queryKey: ["infiniteRollpeList", queryParam],
     queryFn: ({ pageParam = 1 }) => getRollpeList(queryParam, pageParam as number),
