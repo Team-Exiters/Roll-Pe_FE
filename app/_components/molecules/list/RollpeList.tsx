@@ -8,14 +8,17 @@ import NoneList from "@/public/images/icons/icon_non_list.svg";
 import { ButtonMore } from "../ui/button/StyledButton";
 import { useInfiniteRollpeList } from "@/public/lib/hooks/fetching/rollpe/useInfiniteRollpeList";
 import Loading from "../ui/loading/Loading";
+import { RollpeReqeustQueryParam } from "@/public/utils/types";
 
-interface RollpeListTypeProps {
-  type: "inviting" | "main" | "hot" | "my";
-}
-export const RollpeList: React.FC<RollpeListTypeProps> = ({ type }) => {
+type RollpeListProps = {
+  type: RollpeReqeustQueryParam;
+};
+
+export const RollpeList: React.FC<RollpeListProps> = ({ type }) => {
   const { data, fetchNextPage, hasNextPage, isLoading } =
     useInfiniteRollpeList(type);
 
+  console.log(data);
   return isLoading ? (
     <Loading />
   ) : (
