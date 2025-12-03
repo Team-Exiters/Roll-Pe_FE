@@ -3,12 +3,11 @@ import styled from "styled-components";
 import { COLORS } from "@/public/styles/colors";
 import { GeneralSection } from "@/public/styles/styled-components/main/main.style";
 import HotRollpeList from "./HotRollpeList";
-import { useInfiniteRollpeList } from "@/public/lib/hooks/fetching/rollpe/useInfiniteRollpeList";
-import { useRollpeList } from "@/public/lib/hooks/fetching/rollpe/useRollpeList";
+import { useHotRollpeList } from "@/public/lib/hooks/fetching/rollpe/useHotRollpeList";
 
 // 최근 뜨고 있는 롤페 섹션
 const RecentHotRollpeSection: React.FC = () => {
-  const { data } = useRollpeList("hot");
+  const { data } = useHotRollpeList();
 
   return (
     data && (

@@ -3,15 +3,22 @@ import {
   MyRollpeWrapper,
   MyRollpeContainer,
 } from "../_components/styles/InvitedRollpeStyles";
+import localFont from "next/font/local";
+
+const hakgyoansim = localFont({
+  src: "../../../../public/fonts/HakgyoansimR.woff2",
+  weight: "400",
+  display: "swap",
+});
 
 const MyRollpePage: React.FC = () => {
   return (
-    <MyRollpeWrapper>
+    <MyRollpeWrapper className={hakgyoansim.className}>
       <MyRollpeContainer>
         <div className={"title-wrapper"}>
           <h1>내 롤페</h1>
         </div>
-        <RollpeList type={"my"} />
+        <RollpeList type="host" />
       </MyRollpeContainer>
     </MyRollpeWrapper>
   );

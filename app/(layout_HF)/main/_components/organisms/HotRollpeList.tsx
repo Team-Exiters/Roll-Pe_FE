@@ -1,15 +1,15 @@
 "use client";
 import MainRollpeCard from "@/app/_components/molecules/ui/card/main-rollpe-list/MainRollpeCard";
 import styled from "styled-components";
-import { RollpeListProps } from "@/public/utils/types";
+import { Rollpe } from "@/public/utils/types";
 
-const HotRollpeList: React.FC<{ hotRollpeList: RollpeListProps }> = ({
-  hotRollpeList,
-}) => {
+const HotRollpeList: React.FC<{
+  hotRollpeList: Rollpe[];
+}> = ({ hotRollpeList }) => {
   return (
     <ListContainer>
       {hotRollpeList &&
-        hotRollpeList.results.map((rollpe) => (
+        hotRollpeList.map((rollpe) => (
           <MainRollpeCard
             key={rollpe.id}
             receivingDate={rollpe.receive.receivingDate}
