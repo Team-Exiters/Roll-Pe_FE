@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { RollpeListProps } from "@/public/utils/types";
+import { RollpeListProps, queryParam } from "@/public/utils/types";
 import { getRollpeList } from "@/public/lib/apis/rollpe.api";
 
-export const useRollpeList = (queryParam: "invited" | "main" | "hot" | "my") => {
+// "message": "Query Param type은 main, my, host, inviting이 존재합니다.",
+export const useRollpeList = (queryParam: queryParam) => {
   return useQuery<RollpeListProps>({
     queryKey: ["rollpeList", queryParam],
     queryFn: () => getRollpeList(queryParam, 1),

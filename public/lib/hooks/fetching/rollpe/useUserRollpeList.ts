@@ -3,7 +3,7 @@ import { userIntroResponse } from "@/public/utils/types";
 import { getUserRollpeList } from "@/public/lib/apis/rollpe.api";
 
 
-export const useUserRollpeList = (queryParam: "invited" | "main" | "hot" | "my") => {
+export const useUserRollpeList = (queryParam: "inviting" | "main" | "hot" | "host") => {
   return useQuery<userIntroResponse>({
     //쿼리키로 쿼리파람 지정 => invite, main... 여부에 따라 캐싱
     queryKey: ['rollpeList', queryParam],
