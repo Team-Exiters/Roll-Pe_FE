@@ -1,4 +1,7 @@
-import { RollpeList } from "@/app/_components/molecules/list/RollpeList";
+import {
+  InfiniteRollpeList,
+  RollpeList,
+} from "@/app/_components/molecules/list/RollpeList";
 import {
   MyRollpeWrapper,
   MyRollpeContainer,
@@ -18,7 +21,7 @@ const MyRollpePage: React.FC = () => {
         <div className={"title-wrapper"}>
           <h1>내 롤페</h1>
         </div>
-        <RollpeList type="host" />
+        <InfiniteRollpeList type="host" />
       </MyRollpeContainer>
     </MyRollpeWrapper>
   );
