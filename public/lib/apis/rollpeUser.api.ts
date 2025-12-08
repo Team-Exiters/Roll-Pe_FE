@@ -5,23 +5,23 @@ import { Rollpe, RollpeListProps } from "@/public/utils/types";
 import { userIntroResponse, RollpeReqeustQueryParam } from "@/public/utils/types";
 
 
-// 단순 사용자 일반 롤페 리스트 호출 (내 롤페 / 초대받은 롤페 / 최근 뜨고 있는 롤페 )
+// 단순 개인화 롤페 리스트 (페이지네이션 적용)
+const fetchInfiniteUserRollpeList = async (queryParam: RollpeReqeustQueryParam, page: number) => {
+  return await axiosInstanceAuth.get(`/api/paper/mypage?page=${page}&type=${queryParam}`).then((response) => {
+    return Promise.resolve(response.data.data);
+  }).catch((error) => {
+    return Promise.reject(error);
+  });
+}
+
+// 단순 일반 롤페 리스트 호출 
 const fetchUserRollpeList = async (queryParam: RollpeReqeustQueryParam) => {
-  return await axiosInstanceAuth.get(`/api/paper/mypage?type=${queryParam}`).then((response) => {
+  return await axiosInstanceAuth.get(`/api/paper/user?type=${queryParam}`).then((response) => {
     return Promise.resolve(response.data.data);
   }).catch((error) => {
     return Promise.reject(error);
   })
 
-}
-
-// 단순 사용자 무한 스크롤 롤페 리스트 호출 (페이지네이션 - 초대받은 롤페)
-const fetchInfiniteUserRollpeList = async (queryParam: RollpeReqeustQueryParam, page: number) => {
-  return await axiosInstanceAuth.get(`/api/paper/user?page=${page}&type=${queryParam}`).then((response) => {
-    return Promise.resolve(response.data.data);
-  }).catch((error) => {
-    return Promise.reject(error);
-  });
 }
 
 // 사용자 롤페 현황 호출
