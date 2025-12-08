@@ -1,4 +1,4 @@
-import { InfiniteRollpeList } from "@/app/_components/molecules/list/RollpeList";
+import { RollpeList } from "@/app/_components/molecules/list/RollpeList";
 import localFont from "next/font/local";
 import {
   MyRollpeWrapper,
@@ -18,7 +18,7 @@ const InvitedRollpePage: React.FC = () => {
         <div className={"title-wrapper"}>
           <h1>초대받은 롤페</h1>
         </div>
-        <InfiniteRollpeList type={"inviting"} />
+        <RollpeList type={"inviting"} />
       </MyRollpeContainer>
     </MyRollpeWrapper>
   );
