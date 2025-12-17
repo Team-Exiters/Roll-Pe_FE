@@ -1,5 +1,5 @@
 //! Rollpe List 관련
-
+export type RollpeReqeustQueryParam = "inviting" | "main" | "my" | "host" | "hot"
 export interface RollpeListProps {
   results: Rollpe[];
   count: number;

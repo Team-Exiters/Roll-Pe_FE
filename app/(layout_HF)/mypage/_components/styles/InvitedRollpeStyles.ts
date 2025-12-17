@@ -14,6 +14,7 @@ export const MyRollpeContainer = styled.div`
   gap: 2rem;
 
   width: 100%;
+  min-height: 70svh;
 
   & > .title-wrapper > h1 {
     color: ${COLORS.ROLLPE_SECONDARY};

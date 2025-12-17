@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import {
   MyRollpeWrapper,
   MyRollpeContainer,
-} from "./_components/styles/InvitedRollpeStyles";
+} from "../_components/styles/InvitedRollpeStyles";
 
 const hakgyoansim = localFont({
   src: "../../../../public/fonts/HakgyoansimR.woff2",
@@ -18,7 +18,7 @@ const InvitedRollpePage: React.FC = () => {
         <div className={"title-wrapper"}>
           <h1>초대받은 롤페</h1>
         </div>
-        <RollpeList type={"invited"} />
+        <RollpeList type={"inviting"} />
       </MyRollpeContainer>
     </MyRollpeWrapper>
   );

@@ -1,9 +1,9 @@
 "use client";
 import styled from "styled-components";
-import { useUserRollpeList } from "@/public/lib/hooks/fetching/rollpe/useUserRollpeList";
+import { useUserRollpeStatus } from "@/public/lib/hooks/fetching/rollpe/useUserRollpeStatus";
 
 const UserRollpeStatus: React.FC = () => {
-  const { data } = useUserRollpeList("main");
+  const { data } = useUserRollpeStatus();
 
   return (
     data && (

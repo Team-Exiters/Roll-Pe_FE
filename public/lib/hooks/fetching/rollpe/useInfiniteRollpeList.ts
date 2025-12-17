@@ -1,12 +1,13 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { RollpeListProps } from "@/public/utils/types";
-import { getRollpeList } from "@/public/lib/apis/rollpe.api";
+import { getInfiniteUserRollpeList } from "@/public/lib/apis/rollpeUser.api";
+import { RollpeReqeustQueryParam } from "@/public/utils/types";
 
 
-export const useInfiniteRollpeList = (queryParam: "invited" | "main" | "hot" | "my") => {
-  return useInfiniteQuery<RollpeListProps, any>({
+export const useInfiniteRollpeList = (queryParam: RollpeReqeustQueryParam) => {
+  return useInfiniteQuery<RollpeListProps>({
     queryKey: ["infiniteRollpeList", queryParam],
-    queryFn: ({ pageParam = 1 }) => getRollpeList(queryParam, pageParam as number),
+    queryFn: ({ pageParam = 1 }) => getInfiniteUserRollpeList(queryParam, pageParam as number),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
       //페이지 파라미터 분리
