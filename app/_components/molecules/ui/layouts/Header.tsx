@@ -53,13 +53,10 @@ export const HeaderBack: React.FC = () => {
   );
 };
 
-export const HeaderMenuLogo: React.FC = () => {
-  const router = useRouter();
-  const [isSlideOpen, setIsSlideOpen] = useState<boolean>(false);
 
-  const onClickMenuHandler = () => {
-    setIsSlideOpen(true);
-  };
+
+export const HeaderBL = () => {
+  const router = useRouter();
 
   const onClickBackHandler = () => {
     router.back();
@@ -72,13 +69,7 @@ export const HeaderMenuLogo: React.FC = () => {
   return (
     <LogoHeaderWrapper left={true}>
       <BackButton onClick={() => onClickBackHandler()}>
-        <Image
-          src={Back}
-          layout="responsive"
-          width={28}
-          height={28}
-          alt={"메뉴 아이콘"}
-        />
+        <Image src={Back} alt={"뒤로가기"} fill priority />
       </BackButton>
       <LogoButton onClick={() => onClickLogoHandler()}>
         <Image
@@ -89,51 +80,7 @@ export const HeaderMenuLogo: React.FC = () => {
           alt={"홈으로"}
         />
       </LogoButton>
-      <MenuButton onClick={() => onClickMenuHandler()}>
-        <Image
-          src={Menu}
-          layout="responsive"
-          width={28}
-          height={28}
-          alt={"메뉴 아이콘"}
-        />
-      </MenuButton>
-      {<SlideMenu isSlideOpen={isSlideOpen} setIsSlideOpen={setIsSlideOpen} />}
-    </LogoHeaderWrapper>
-  );
-};
-
-export const HeaderLogo = () => {
-  const router = useRouter();
-
-  const onClickBackHandler = () => {
-    router.back();
-  };
-
-  const onClickLogoHandler = () => {
-    router.push("/main");
-  };
-  return (
-    <LogoHeaderWrapper left={true}>
-      <BackButton onClick={() => onClickBackHandler()}>
-        <Image
-          src={Back}
-          layout="responsive"
-          width={28}
-          height={28}
-          alt={"뒤로가기"}
-        />
-      </BackButton>
-      <LogoButton onClick={() => onClickLogoHandler()}>
-        <Image
-          src={logo}
-          layout="responsive"
-          width={48}
-          height={24}
-          alt={"홈으로"}
-        />
-      </LogoButton>
-      <div className={"dummy"}></div>
+      <div className="dummy"></div>
     </LogoHeaderWrapper>
   );
 };
