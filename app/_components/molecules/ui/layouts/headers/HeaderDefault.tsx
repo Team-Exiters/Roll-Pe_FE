@@ -5,7 +5,7 @@ import { HeaderWrapper, MenuButton } from "./HeadersStyles";
 import SlideMenu from "../SlideMenu";
 import Menu from "@/public/images/icons/icon_menu.svg";
 
-export const HeaderDefault: React.FC = () => {
+const HeaderDefault: React.FC = () => {
   const [isSlideOpen, setIsSlideOpen] = useState<boolean>(false);
 
   const onClickMenuHandler = () => {
@@ -23,3 +23,5 @@ export const HeaderDefault: React.FC = () => {
     </>
   );
 };
+
+export default HeaderDefault;

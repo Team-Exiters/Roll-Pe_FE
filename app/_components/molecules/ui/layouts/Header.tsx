@@ -14,27 +14,6 @@ import { useState } from "react";
 
 
 
-export const HeaderBack: React.FC = () => {
-  const router = useRouter();
-
-  const onClickBackHandler = () => {
-    router.back();
-  };
-
-  return (
-    <HeaderWrapper left={true}>
-      <BackButton onClick={() => onClickBackHandler()}>
-        <Image
-          src={Back}
-          layout="responsive"
-          width={28}
-          height={28}
-          alt={"메뉴 아이콘"}
-        />
-      </BackButton>
-    </HeaderWrapper>
-  );
-};
 
 
 

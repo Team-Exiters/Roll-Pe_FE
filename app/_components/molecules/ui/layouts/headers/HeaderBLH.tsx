@@ -8,7 +8,7 @@ import Menu from "@/public/images/icons/icon_menu.svg";
 import Back from "@/public/images/icons/icon_arrow_left.svg";
 import logo from "@/public/images/logos/logo.korean.png";
 
-export const HeaderBLH: React.FC = () => {
+const HeaderBLH: React.FC = () => {
   const router = useRouter();
   const [isSlideOpen, setIsSlideOpen] = useState<boolean>(false);
 
