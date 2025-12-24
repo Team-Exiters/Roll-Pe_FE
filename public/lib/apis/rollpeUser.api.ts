@@ -60,6 +60,7 @@ export async function getUserRollpeList(queryParam: RollpeReqeustQueryParam) {
 export async function getInfiniteUserRollpeList(queryParam: RollpeReqeustQueryParam, page: number): Promise<RollpeListProps> {
   try {
     const response = await fetchInfiniteUserRollpeList(queryParam, page);
+    console.log(response);
     return response;
   } catch (error) {
     if (error && typeof error === 'object' && 'response' in error) {
