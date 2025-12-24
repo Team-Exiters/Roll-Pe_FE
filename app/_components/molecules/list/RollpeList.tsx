@@ -86,7 +86,7 @@ const RollpeListWrapper = styled.section`
   gap: 1.25rem;
 
   width: 100%;
-  flex: 1;
+  f
 
   & > .count-wrapper {
     display: flex;

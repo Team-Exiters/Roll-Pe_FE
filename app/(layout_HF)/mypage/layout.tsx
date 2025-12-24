@@ -1,5 +1,4 @@
-import Footer from "@/app/_components/molecules/ui/layouts/Footer";
-import HeaderDefault from "@/app/_components/molecules/ui/layouts/headers/HeaderDefault";
+import HeaderBLH from "@/app/_components/molecules/ui/layouts/headers/HeaderBLH";
 
 //layout_HF : Header + Footer
 export default function LogoMenuHeaderLayout({
@@ -9,9 +8,8 @@ export default function LogoMenuHeaderLayout({
 }>) {
   return (
     <>
-      <HeaderDefault />
+      <HeaderBLH />
       {children}
-      <Footer />
     </>
   );
 }

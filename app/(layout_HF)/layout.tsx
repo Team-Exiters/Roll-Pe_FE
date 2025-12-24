@@ -11,6 +11,7 @@ export default function LogoMenuHeaderLayout({
     <>
       <HeaderDefault />
       {children}
+      <Footer />
     </>
   );
 }
