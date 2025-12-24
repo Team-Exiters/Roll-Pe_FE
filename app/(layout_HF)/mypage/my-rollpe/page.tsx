@@ -2,7 +2,7 @@ import { RollpeList } from "@/app/_components/molecules/list/RollpeList";
 import {
   MyRollpeWrapper,
   MyRollpeContainer,
-} from "../_components/styles/InvitedRollpeStyles";
+} from "@/app/(layout_HF)/mypage/_components/styles/InvitedRollpeStyles";
 import localFont from "next/font/local";
 
 const hakgyoansim = localFont({
