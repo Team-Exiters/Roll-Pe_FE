@@ -17,35 +17,7 @@ import { useState } from "react";
 
 
 
-export const HeaderBL = () => {
-  const router = useRouter();
-
-  const onClickBackHandler = () => {
-    router.back();
-  };
-
-  const onClickLogoHandler = () => {
-    router.push("/main");
-  };
-
-  return (
-    <LogoHeaderWrapper left={true}>
-      <BackButton onClick={() => onClickBackHandler()}>
-        <Image src={Back} alt={"뒤로가기"} fill priority />
-      </BackButton>
-      <LogoButton onClick={() => onClickLogoHandler()}>
-        <Image
-          src={logo}
-          layout="responsive"
-          width={48}
-          height={24}
-          alt={"홈으로"}
-        />
-      </LogoButton>
-      <div className="dummy"></div>
-    </LogoHeaderWrapper>
-  );
-};
+export 
 
 const HeaderWrapper = styled.header<{ left: boolean }>`
   position: absolute;

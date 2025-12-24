@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import {
   MyRollpeWrapper,
   MyRollpeContainer,
-} from "../_components/styles/InvitedRollpeStyles";
+} from "@/app/(layout_HF)/mypage/_components/styles/InvitedRollpeStyles";
 
 const hakgyoansim = localFont({
   src: "../../../../public/fonts/HakgyoansimR.woff2",
